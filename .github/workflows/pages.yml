@@ -1,0 +1,30 @@
+# Publishes the repository root (the built ZYVORA site) to GitHub Pages.
+# One-time setup: Settings > Pages > Source = "GitHub Actions", or
+#   gh api repos/zyvorai/zyvor-zyvora-site/pages -X POST -f build_type=workflow
+name: Deploy site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+concurrency:
+  group: pages
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  deploy:
+    # Hosted runners for this organisation have been queueing for hours; if that is still true, use the self-hosted
+    # runner labels the other Zyvor sites use (for example [self-hosted, macOS, ARM64]).
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/upload-pages-artifact@v5
+        with: { path: . }
+      - id: deployment
+        uses: actions/deploy-pages@v5
