@@ -55,14 +55,14 @@
     <li class="ok">Pilot-ready</li><li>Self-hosted</li><li>AI off by default</li><li class="warn">Synthetic data only</li><li class="warn">Not yet certified</li>
   </ul>
   <div class="window" role="group" aria-label="A screenshot of the ZYVORA dashboard (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-    <img class="only-light" src="shots/light-dashboard.jpg" alt="ZYVORA dashboard: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1440" height="900"><img class="only-dark" src="shots/dark-dashboard.jpg" alt="ZYVORA dashboard in dark mode: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1440" height="900"></div>
+    <img class="only-light" src="shots/hero-light.jpg" alt="ZYVORA dashboard: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1200" height="750" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/hero-dark.jpg" alt="ZYVORA dashboard in dark mode: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1200" height="750" loading="lazy" decoding="async"></div>
   <p class="foot">The dashboard above is a screenshot of the running app with synthetic data.</p>
 </section>
 
 <section class="band" aria-label="By the numbers">
   <div><b>12</b><span>modules for clinicians, administrators and patients</span></div>
   <div><b>9</b><span>roles, deny by default</span></div>
-  <div><b>181</b><span>documented API operations</span></div>
+  <div><b>182</b><span>documented API operations</span></div>
   <div><b>11</b><span>fixed insight metrics, no generated SQL</span></div>
 </section>
 <p class="foot">Counts come from the product's own documentation (<code>openapi.json</code>, the generated permission matrix, the metric catalogue).</p>
@@ -97,10 +97,19 @@
   <figure class="shot"><img id="shot" src="shots/light-dashboard.jpg" alt="ZYVORA: The day at a glance, light appearance, synthetic data" width="1440" height="900" loading="lazy"><figcaption id="shot-cap">The day at a glance · light · synthetic data</figcaption></figure>
 </section>
 
+<section id="motion">
+  <div class="center"><p class="kicker">In motion</p><h2>See how it feels to use.</h2><p class="sub">Short recordings of the running app with synthetic data. Press play to watch; nothing moves until you do.</p></div>
+  <div class="grid">
+    <figure class="clip rv"><img src="assets/gifs/tour.jpg" data-gif="assets/gifs/tour.gif" alt="The welcome tour spotlighting the menu, search and notification bell" width="880" height="523" loading="lazy"><button type="button" class="play" aria-label="Play: welcome tour">Play</button><figcaption>Welcome tour</figcaption></figure>
+    <figure class="clip rv"><img src="assets/gifs/palette.jpg" data-gif="assets/gifs/palette.gif" alt="The command palette finding Beds and admissions as the word bed is typed" width="880" height="523" loading="lazy"><button type="button" class="play" aria-label="Play: find anything in a keystroke">Play</button><figcaption>Find anything in a keystroke</figcaption></figure>
+    <figure class="clip rv"><img src="assets/gifs/themes.jpg" data-gif="assets/gifs/themes.gif" alt="The dashboard switching from light to dark and back" width="880" height="523" loading="lazy"><button type="button" class="play" aria-label="Play: light and dark">Play</button><figcaption>Light and dark</figcaption></figure>
+  </div>
+</section>
+
 <section id="modules">
   <div class="center"><p class="kicker">Modules</p><h2>Everything a day on the ward needs.</h2></div>
   <picture class="pic"><img class="only-light" src="assets/capabilities-light.svg" alt="Five groups: clinical, hospital, business, governance, and AI with review" loading="lazy"><img class="only-dark" src="assets/capabilities-dark.svg" alt="Five groups: clinical, hospital, business, governance, and AI with review" loading="lazy"></picture>
-  <p class="center"><a class="more" href="#see">See the screens</a></p>
+  <p class="center"><a class="more" href="#see">See the screens</a> &nbsp; <a class="more" href="modules/">All modules</a></p>
   <div class="grid">
     <div class="card rv"><h3>Emergency and wards</h3><p>A tracking board with triage decision support (a trained classifier plus safety rules), admissions, transfers and discharge, and a bed map per ward.</p></div>
     <div class="card rv"><h3>Laboratory and imaging</h3><p>Separate result entry and verification, critical alerts, result history drawn against reference ranges; imaging orders with a wrong-patient guard and radiologist-only reports.</p></div>
@@ -111,7 +120,7 @@
 <section id="security" class="tint">
   <div class="center"><p class="kicker">Security and privacy</p><h2>Built to be trusted with patient records.</h2><p class="sub">The database keeps tenants apart, every call is authorised, and everything that touches a record is on the audit trail.</p></div>
   <picture class="pic"><img class="only-light" src="assets/security-light.svg" alt="Forced row-level security, nine roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"><img class="only-dark" src="assets/security-dark.svg" alt="Forced row-level security, nine roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"></picture>
-  <p class="foot center">Not yet independently penetration-tested or certified. <a class="more" href="#honest">Read the honest limits</a></p>
+  <p class="foot center">Not yet independently penetration-tested or certified. <a class="more" href="#honest">Read the honest limits</a> <a class="more" href="security/">Security in detail</a></p>
 </section>
 
 <section id="ai">
@@ -126,7 +135,7 @@
 </section>
 
 <section id="deploy" class="tint">
-  <div class="center"><p class="kicker">Deploy</p><h2>Run it your way.</h2><p class="sub">The same two container images on Docker Compose, Kubernetes, or k3s with Keycloak sign-in and an Envoy edge.</p><a class="more" href="mailto:sales@zyvor.dev?subject=ZYVORA%20deployment">Ask about deployment</a></div>
+  <div class="center"><p class="kicker">Deploy</p><h2>Run it your way.</h2><p class="sub">The same two container images on Docker Compose, Kubernetes, or k3s with Keycloak sign-in and an Envoy edge.</p><a class="more" href="mailto:sales@zyvor.dev?subject=ZYVORA%20deployment">Ask about deployment</a> &nbsp; <a class="more" href="deploy/">Deployment in detail</a></div>
   <picture class="pic"><img class="only-light" src="assets/deploy-light.svg" alt="Docker Compose, a Helm chart, and k3s with Keycloak and Envoy Gateway" loading="lazy"><img class="only-dark" src="assets/deploy-dark.svg" alt="Docker Compose, a Helm chart, and k3s with Keycloak and Envoy Gateway" loading="lazy"></picture>
   <picture class="pic"><img class="only-light" src="assets/architecture-light.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"><img class="only-dark" src="assets/architecture-dark.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"></picture>
 </section>
@@ -154,6 +163,7 @@
     <a class="card rv" href="resources/ZYVORA-Security-and-privacy-posture.pdf" style="text-decoration:none;color:inherit"><h3>Security and privacy posture</h3><p>The controls we built and, plainly, what we have not done.</p><span class="more">PDF</span></a>
     <a class="card rv" href="resources/ZYVORA-Architecture-and-deployment.pdf" style="text-decoration:none;color:inherit"><h3>Architecture and deployment</h3><p>How it fits together and the ways to run it.</p><span class="more">PDF</span></a>
     <a class="card rv" href="resources/ZYVORA-Module-guide.pdf" style="text-decoration:none;color:inherit"><h3>Module guide</h3><p>What each module does.</p><span class="more">PDF</span></a>
+    <a class="card rv" href="resources/ZYVORA-Integration-matrix.pdf" style="text-decoration:none;color:inherit"><h3>Integration matrix</h3><p>What connects, and what has actually been run.</p><span class="more">PDF</span></a>
   </div>
 </section>
 
@@ -191,9 +201,9 @@
 
 <footer>
   <div class="cols">
-    <div><h4>Product</h4><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="#ai">AI with review</a></div>
-    <div><h4>Trust</h4><a href="#honest">Honest limits</a><a href="#faq">FAQ</a><a href="mailto:security@zyvor.dev">Report a vulnerability</a></div>
-    <div><h4>Zyvor AI Labs</h4><a href="https://zyvor.dev">zyvor.dev</a><a href="mailto:sales@zyvor.dev">Contact sales</a></div>
+    <div><h3>Product</h3><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="#ai">AI with review</a></div>
+    <div><h3>Trust</h3><a href="#honest">Honest limits</a><a href="#faq">FAQ</a><a href="mailto:security@zyvor.dev">Report a vulnerability</a></div>
+    <div><h3>Zyvor AI Labs</h3><a href="https://zyvor.dev">zyvor.dev</a><a href="mailto:sales@zyvor.dev">Contact sales</a></div>
   </div>
   <p>© 2026 Zyvor AI Labs. All rights reserved. ZYVORA is proprietary software.</p>
   <p>Screens and figures are from a development system with synthetic data. Features described are those documented in the product; nothing here is a clinical or regulatory claim.</p>

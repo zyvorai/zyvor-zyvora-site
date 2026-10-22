@@ -83,6 +83,13 @@
     Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
   }
 
+  // ---- click-to-play clips: a still poster until asked (no autoplay, so nothing moves for people who do not want it)
+  [].forEach.call(document.querySelectorAll(".clip"), function (fig) {
+    var btn = fig.querySelector(".play"), im = fig.querySelector("img");
+    if (!btn || !im) return;
+    btn.addEventListener("click", function () { im.src = im.getAttribute("data-gif"); fig.classList.add("on"); });
+  });
+
   // ---- reveal on scroll (content is visible without JS or with reduced motion)
   var rv = [].slice.call(document.querySelectorAll(".rv"));
   if (!reduce && "IntersectionObserver" in window) {

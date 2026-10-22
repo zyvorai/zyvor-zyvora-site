@@ -1,0 +1,22 @@
+# Checks every change to the site: no internal details in the files, then Chromium loads every page in both themes
+# (no console errors, images load, links resolve, axe-core finds no serious or critical issues, phone width does not overflow).
+name: Site check
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Leak guard
+        run: scripts/leak-guard.sh
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version: 24 }
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Site check
+        run: npm run check
