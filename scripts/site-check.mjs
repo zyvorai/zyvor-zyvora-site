@@ -73,7 +73,7 @@ try {
     await ctx.close();
   }
   // sub-pages: load without errors, axe-clean in both themes, in-page and cross-page links resolve
-  for (const sub of ["security", "modules", "deploy"]) {
+  for (const sub of ["security", "modules", "deploy", "try"]) {
     for (const scheme of ["light", "dark"]) {
       const ctx = await browser.newContext({ colorScheme: scheme, viewport: { width: 1440, height: 900 } });
       const pg = await ctx.newPage();
@@ -95,13 +95,38 @@ try {
       await ctx.close();
     }
   }
+  // /try/: the computer picker swaps the command, Copy puts it on the clipboard, the checklist remembers ticks, and the page works without JavaScript
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, permissions: ["clipboard-read", "clipboard-write"] });
+    const pg = await ctx.newPage();
+    await pg.goto(`${base}/try/`, { waitUntil: "networkidle" });
+    for (const [name, id, needle] of [["Windows", "cmd-windows", "get.ps1"], ["Linux", "cmd-linux", "get.sh"], ["Mac", "cmd-mac", "get.sh"]]) {
+      await pg.getByRole("radio", { name }).click();
+      check(await pg.locator(`#${id}`).isVisible(), `/try/: the ${name} command is shown after choosing ${name}`);
+      check((await pg.locator(`#${id}`).innerText()).includes(needle), `/try/: the ${name} command mentions ${needle}`);
+      check(await pg.locator(".os-panel:visible").count() === 1, `/try/: exactly one computer panel is visible for ${name}`);
+    }
+    await pg.locator('.copy[data-copy="cmd-mac"]').click();
+    const clip = await pg.evaluate(() => navigator.clipboard.readText());
+    check(clip.includes("get.sh | sh -s -- up --demo --seed"), "/try/: Copy puts the Mac command on the clipboard");
+    await pg.getByRole("checkbox").first().check();
+    check((await pg.locator("#drive-count").innerText()) === "1", "/try/: the checklist counts a tick");
+    await pg.reload({ waitUntil: "networkidle" });
+    check(await pg.getByRole("checkbox").first().isChecked(), "/try/: a tick is remembered after reload");
+    await ctx.close();
+    const nojs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
+    const np = await nojs.newPage();
+    await np.goto(`${base}/try/`);
+    check(await np.locator("#cmd-mac").isVisible() && await np.locator("#cmd-windows").isVisible() && await np.locator("#cmd-linux").isVisible(), "/try/: all commands are visible without JavaScript");
+    await nojs.close();
+  }
   // phone: no sideways scroll
   const m = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
   const mp = await m.newPage();
   await mp.goto(base + "/", { waitUntil: "networkidle" });
   const overflow = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check(overflow <= 0, `phone width overflows by ${overflow}px`);
-  for (const sub of ["security", "modules", "deploy"]) {
+  for (const sub of ["security", "modules", "deploy", "try"]) {
     await mp.goto(`${base}/${sub}/`, { waitUntil: "networkidle" });
     const o = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     check(o <= 0, `/${sub}/ overflows by ${o}px on a phone`);
