@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Try it | ZYVORA</title>
+<meta name="description" content="Try ZYVORA on your own Mac, Windows or Linux computer in about five minutes: one command, a guided walk-through with pictures, and a checklist for a doctor to test it. Synthetic data only.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://zyvorai.github.io/zyvor-zyvora-site/try/">
+<link rel="icon" href="../assets/mark-light.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ZYVORA"><meta property="og:title" content="Try ZYVORA on your own computer | ZYVORA"><meta property="og:description" content="One command, five minutes, synthetic data. A guided trial for doctors."><meta property="og:url" content="https://zyvorai.github.io/zyvor-zyvora-site/try/">
+<meta property="og:image" content="https://zyvorai.github.io/zyvor-zyvora-site/assets/og.png"><meta property="og:image:alt" content="ZYVORA: the calm way to run a hospital"><meta name="twitter:card" content="summary_large_image">
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="try.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="../#top" aria-label="ZYVORA home">
+    <img class="logo only-light" src="../assets/mark-light.svg" alt="" width="32" height="32"><img class="logo only-dark" src="../assets/mark-dark.svg" alt="" width="32" height="32">
+    <span>ZYVORA</span>
+  </a>
+  <nav id="sections" aria-label="Sections">
+    <a class="nav-try" href="../try/">Try it</a><a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../#ai">AI</a><a href="../#deploy">Deploy</a><a href="../#honest">Honest limits</a><a href="../#resources">Resources</a><a href="../#pricing">Pricing</a><a href="../#faq">FAQ</a>
+  </nav>
+  <div class="bar-actions">
+    <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <a class="btn primary small" href="mailto:sales@zyvor.dev?subject=ZYVORA">Talk to us</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero sub-hero" id="top">
+  <p class="kicker">Try it</p>
+  <h1>Try ZYVORA on your <em>own computer.</em></h1>
+  <p class="lede">One command, about five minutes, and a hospital full of invented patients to look around. No sign-up, nothing to buy, and nothing leaves your machine.</p>
+  <div class="cta"><a class="btn primary" href="#start">Start: pick your computer</a><a class="btn" href="#watch">Watch it first</a></div>
+  <ul class="chips" aria-label="What to expect"><li class="ok">About 5 minutes</li><li>Runs on your computer</li><li>Remove in one command</li><li class="warn">Synthetic data only</li><li class="warn">Not a certified medical product</li></ul>
+  <picture class="pic try-strip"><img class="only-light" src="../assets/try-steps-light.svg" alt="Five steps: paste one command, accept the browser warning once, pick a demo doctor, look around, run the check command" width="1280" height="400"><img class="only-dark" src="../assets/try-steps-dark.svg" alt="Five steps: paste one command, accept the browser warning once, pick a demo doctor, look around, run the check command" width="1280" height="400"></picture>
+</section>
+
+<section id="start">
+  <div class="center"><p class="kicker">Step 1</p><h2>Pick your computer.</h2><p class="sub">We guessed from your browser; change it if we were wrong.</p></div>
+  <div class="controls"><div class="oseg" role="radiogroup" aria-label="Your computer">
+    <button type="button" role="radio" aria-checked="true" data-value="mac">Mac</button>
+    <button type="button" role="radio" aria-checked="false" data-value="windows">Windows</button>
+    <button type="button" role="radio" aria-checked="false" data-value="linux">Linux</button>
+  </div></div>
+  <picture class="pic where"><img class="only-light" src="../assets/try-where-light.svg" alt="How to open a terminal: on a Mac press Command and Space and type Terminal; on Windows press the Windows key and type PowerShell; on Linux press Control, Alt and T" width="1280" height="400"><img class="only-dark" src="../assets/try-where-dark.svg" alt="How to open a terminal: on a Mac press Command and Space and type Terminal; on Windows press the Windows key and type PowerShell; on Linux press Control, Alt and T" width="1280" height="400"></picture>
+
+  <div class="os-panel" data-os="mac">
+    <h3>Mac</h3>
+    <p>Open <strong>Terminal</strong>, paste this, press Return.</p>
+    <div class="cmdrow"><pre class="cmd" tabindex="0" aria-label="Install command for Mac"><code id="cmd-mac">curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- up --demo --seed</code></pre><button type="button" class="copy" data-copy="cmd-mac">Copy</button></div>
+    <p class="small">You need nothing installed first. If there is no container engine the installer offers to set one up (Homebrew, then podman) and asks before it does anything. Apple Silicon and Intel both work.</p>
+  </div>
+  <div class="os-panel" data-os="windows">
+    <h3>Windows</h3>
+    <p class="note warn"><strong>Not yet verified on a Windows PC.</strong> The script is tested with simulated Windows calls only. If you try it, please tell us what you see (feedback link at the bottom).</p>
+    <p>Open <strong>PowerShell</strong>, paste this, press Enter. It runs ZYVORA inside WSL 2 (Windows 10 version 2004 or later, or Windows 11).</p>
+    <div class="cmdrow"><pre class="cmd" tabindex="0" aria-label="Install command for Windows"><code id="cmd-windows">&amp; ([scriptblock]::Create((irm https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.ps1))) up --demo --seed</code></pre><button type="button" class="copy" data-copy="cmd-windows">Copy</button></div>
+    <p class="small">If WSL or a container engine is missing it asks before setting them up. Windows will ask for administrator approval and a restart; after that, run the same command again.</p>
+  </div>
+  <div class="os-panel" data-os="linux">
+    <h3>Linux</h3>
+    <p>Open a terminal, paste this, press Enter.</p>
+    <div class="cmdrow"><pre class="cmd" tabindex="0" aria-label="Install command for Linux"><code id="cmd-linux">curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- up --demo --seed</code></pre><button type="button" class="copy" data-copy="cmd-linux">Copy</button></div>
+    <p class="small">If there is no container engine it offers to install podman with apt or dnf (sudo asks for your password) and asks first.</p>
+  </div>
+</section>
+
+<section class="tint" id="steps">
+  <div class="center"><p class="kicker">Steps 2 to 4</p><h2>What you will see.</h2></div>
+  <div class="step">
+    <div><h3><span class="n">2</span> The installer runs</h3><p>It downloads two small images, starts ZYVORA, loads invented patients, and opens your browser. The picture is the end of a real run.</p></div>
+    <picture class="pic shot"><img src="../assets/gifs/install-terminal.jpg" alt="Terminal output of the installer ending with: ZYVORA is running, then all checks passed" width="880" height="598" loading="lazy"></picture>
+  </div>
+  <div class="step flip">
+    <div><h3><span class="n">3</span> The browser warns once</h3><p>The demo uses a security certificate it made itself, so every browser shows a warning the first time. It is safe here: the address is your own computer. Click <strong>Advanced</strong>, then <strong>Proceed</strong>.</p><ul class="words"><li><b>Chrome, Edge:</b> Advanced, then Proceed</li><li><b>Safari:</b> Show Details, then visit this website</li><li><b>Firefox:</b> Advanced, then Accept the Risk</li></ul></div>
+    <picture class="pic"><img class="only-light" src="../assets/try-warning-light.svg" alt="The browser warning: click Advanced, then Proceed" width="880" height="520"><img class="only-dark" src="../assets/try-warning-dark.svg" alt="The browser warning: click Advanced, then Proceed" width="880" height="520"></picture>
+  </div>
+  <div class="step">
+    <div><h3><span class="n">4</span> Choose a demo user</h3><p>Click <strong>Continue with single sign-on</strong>. On the next page pick <strong>Dr. Meera Rao</strong>. There is no password in the demo, because every user here is invented. Real installations sign in through the hospital&rsquo;s own identity provider.</p></div>
+    <picture class="pic shot"><img class="only-light" src="../shots/try-picker-light.jpg" alt="The Choose a demo user page with Dr. Meera Rao, Dr. Imran Khan, Nurse Kavya Iyer and others" width="1440" height="900" loading="lazy"><img class="only-dark" src="../shots/try-picker-dark.jpg" alt="The Choose a demo user page with Dr. Meera Rao, Dr. Imran Khan, Nurse Kavya Iyer and others" width="1440" height="900" loading="lazy"></picture>
+  </div>
+</section>
+
+<section id="watch">
+  <div class="center"><p class="kicker">Watch it first</p><h2>Two minutes, start to finish.</h2><p class="sub">Silent recordings of a real run. Nothing moves until you press play.</p></div>
+  <div class="grid two">
+    <figure class="clip rv"><img src="../assets/gifs/install-terminal.jpg" data-gif="../assets/gifs/install-terminal.gif" alt="The installer in a terminal" width="880" height="598" loading="lazy"><button type="button" class="play" aria-label="Play: install in the terminal">Play</button><figcaption>1. Paste the command</figcaption></figure>
+    <figure class="clip rv"><img src="../assets/gifs/install-browser.jpg" data-gif="../assets/gifs/install-browser.gif" alt="The browser: sign-in page, choosing Dr. Meera Rao, the dashboard, appointments and patients" width="880" height="550" loading="lazy"><button type="button" class="play" aria-label="Play: signing in as a doctor">Play</button><figcaption>2. Sign in as a doctor</figcaption></figure>
+  </div>
+</section>
+
+<section class="tint" id="drive">
+  <div class="center"><p class="kicker">Step 5</p><h2>A doctor&rsquo;s test drive.</h2><p class="sub">Eight things to try, about ten minutes. Tick them off as you go; your ticks stay in this browser only.</p>
+  <p class="progress" id="drive-progress" aria-live="polite"><span id="drive-count">0</span> of 8 tried</p></div>
+  <ol class="drive">
+<li class="tick"><label><input type="checkbox" data-k="drive-1"><span><b>Sign in as Dr. Meera Rao</b></span></label><p>On the sign-in page choose <strong>Continue with single sign-on</strong>, then <strong>Dr. Meera Rao</strong>. If a welcome tour appears, press Skip.</p><p class="see"><span>You should see</span> A dashboard that says &ldquo;Good morning, Dr. Rao&rdquo;, a waiting room and a red banner.</p><figure class="thumb"><img class="only-light" src="../shots/try-dashboard-light.jpg" alt="The doctor dashboard with the waiting room and a critical lab banner" width="1440" height="900" loading="lazy"><img class="only-dark" src="../shots/try-dashboard-dark.jpg" alt="The doctor dashboard in dark appearance" width="1440" height="900" loading="lazy"></figure></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-2"><span><b>See who is waiting</b></span></label><p>Look at the <strong>Waiting room</strong> card, then open <strong>Appointments</strong> in the top bar.</p><p class="see"><span>You should see</span> Today&rsquo;s appointments with a queue number, status, and Check in, No-show and Cancel actions.</p><figure class="thumb"><img src="../shots/try-appointments-light.jpg" alt="Today&rsquo;s appointments list" width="1440" height="900" loading="lazy"></figure></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-3"><span><b>Deal with the critical lab result</b></span></label><p>Click <strong>Open</strong> on the red banner to read the result, then <strong>Acknowledge</strong>.</p><p class="see"><span>You should see</span> The banner goes away for everyone at once. Unacknowledged results escalate to the nurses.</p><figure class="thumb"><img class="only-light" src="../shots/light-lab.jpg" alt="The laboratory screen" width="1440" height="900" loading="lazy"><img class="only-dark" src="../shots/dark-lab.jpg" alt="The laboratory screen, dark" width="1440" height="900" loading="lazy"></figure></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-4"><span><b>Open a patient and start an encounter</b></span></label><p><strong>Patients</strong>, then a name, then <strong>Start encounter</strong>. Write a note, add a vital sign, prescribe something.</p><p class="see"><span>You should see</span> The allergy card comes first. Notes keep every revision, and signing is for doctors only.</p><figure class="thumb"><img class="only-light" src="../shots/light-encounter.jpg" alt="An encounter workspace" width="1440" height="900" loading="lazy"><img class="only-dark" src="../shots/dark-encounter.jpg" alt="An encounter workspace, dark" width="1440" height="900" loading="lazy"></figure></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-5"><span><b>Send an urgent message to the nurse</b></span></label><p>On a patient choose <strong>Message the care team</strong>, tick <strong>Urgent</strong>, send. Then open the account menu, sign out, and sign in as <strong>Nurse Kavya Iyer</strong>.</p><p class="see"><span>You should see</span> The nurse sees an alert that stays until it is opened. Every user in the demo is invented and has no password.</p></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-6"><span><b>Look at the emergency board</b></span></label><p>Open <strong>Emergency</strong> in the top bar.</p><p class="see"><span>You should see</span> Arrivals by urgency, with triage and bed placement.</p><figure class="thumb"><img src="../shots/try-emergency-light.jpg" alt="The emergency board" width="1440" height="900" loading="lazy"></figure></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-7"><span><b>Search from the keyboard</b></span></label><p>Press <kbd>Cmd</kbd>+<kbd>K</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>K</kbd>, type <em>bed</em>, press Enter.</p><p class="see"><span>You should see</span> You jump to Beds and admissions. Patient names are searchable here too.</p></li>
+<li class="tick"><label><input type="checkbox" data-k="drive-8"><span><b>Switch to dark mode</b></span></label><p>Click the moon icon in the top bar.</p><p class="see"><span>You should see</span> The whole app changes appearance and remembers it.</p></li>
+  </ol>
+  <p class="center small">The assistant that drafts notes is a stand-in in the demo, and every patient, result and number is invented. Nothing you type leaves your computer.</p>
+</section>
+
+<section id="after">
+  <div class="center"><p class="kicker">Afterwards</p><h2>Check it, or take it away.</h2></div>
+  <div class="grid two">
+    <div class="card"><h3>Did everything install correctly?</h3><p>Run <code>~/.zyvora/zyvora test</code>. It signs in, creates a record and reads it back. <strong>all checks passed</strong> means everything works.</p></div>
+    <div class="card"><h3>Remove it</h3><p>Run <code>~/.zyvora/zyvora uninstall</code>. The containers and their data are deleted; only a small settings folder, <code>~/.zyvora</code>, stays until you delete it.</p></div>
+  </div>
+</section>
+
+<section class="tint" id="help">
+  <div class="center"><p class="kicker">If something goes wrong</p><h2>Common questions.</h2></div>
+  <div class="faqs">
+<details><summary>The browser says the connection is not private</summary><p>That is expected: the demo makes its own security certificate on your computer. Choose <strong>Advanced</strong>, then <strong>Proceed</strong> (Safari: Show Details, then visit this website). You do this once per browser.</p></details>
+<details><summary>Nothing opened, or the page cannot be reached</summary><p>Give it a minute after the command finishes, then run <code>~/.zyvora/zyvora status</code> (all five lines should say Up) and open the address the installer printed. The app listens on port 8443 on this computer only.</p></details>
+<details><summary>It asked me to install something</summary><p>If there is no container engine it offers to install one (podman, using Homebrew on a Mac, or your package manager on Linux; WSL and podman on Windows). It always asks first. Answering no stops with the exact steps to do it yourself.</p></details>
+<details><summary>Port 8443 is already in use</summary><p>Add a different port at the end of the command, for example <code>--port 9443</code> (Windows: put it after <code>--seed</code> as well).</p></details>
+<details><summary>Windows: what happens the first time</summary><p>If WSL 2 is missing the script offers to install it. Windows asks for administrator approval, then you restart Windows, open Ubuntu once from the Start menu to create a Linux user, and run the same command again.</p></details>
+<details><summary>I am behind a company proxy or firewall</summary><p>The installer downloads from github.com and ghcr.io. Ask IT to allow both, or try from a home connection.</p></details>
+<details><summary>Start over, or remove everything</summary><p><code>~/.zyvora/zyvora uninstall</code> deletes the containers and their data. To also delete the settings folder: <code>rm -rf ~/.zyvora</code> (Windows: run it inside Ubuntu). Then run the install command again.</p></details>
+  </div>
+  <div class="center feedback"><h3>Tell us how it went.</h3><p>What worked, what confused you, what you wanted to see. If something failed, include the output of <code>~/.zyvora/zyvora test</code> and your computer type.</p>
+  <a class="btn primary" href="mailto:sales@zyvor.dev?subject=ZYVORA%20trial%20feedback&amp;body=My%20computer%20(Mac%2FWindows%2FLinux)%3A%0A%0AWhat%20worked%3A%0A%0AWhat%20did%20not%3A%0A%0AOutput%20of%20the%20test%20command%20(if%20something%20failed)%3A%0A">Send feedback</a></div>
+</section>
+</main>
+<footer>
+  <div class="cols">
+    <div><h3>Product</h3><a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../#ai">AI with review</a></div>
+    <div><h3>Trust</h3><a href="../#honest">Honest limits</a><a href="../#faq">FAQ</a><a href="mailto:security@zyvor.dev">Report a vulnerability</a></div>
+    <div><h3>Zyvor AI Labs</h3><a href="https://zyvor.dev">zyvor.dev</a><a href="mailto:sales@zyvor.dev">Contact sales</a></div>
+  </div>
+  <p>© 2026 Zyvor AI Labs. All rights reserved. ZYVORA is proprietary software.</p>
+  <p>Screens and figures are from a development system with synthetic data. Features described are those documented in the product; nothing here is a clinical or regulatory claim.</p>
+</footer>
+<script src="../site.js"></script>
+<script src="try.js"></script>
+</body>
+</html>

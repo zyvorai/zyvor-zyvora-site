@@ -21,7 +21,7 @@
     <span>ZYVORA</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../#ai">AI</a><a href="../#deploy">Deploy</a><a href="../#honest">Honest limits</a><a href="../#resources">Resources</a><a href="../#pricing">Pricing</a><a href="../#faq">FAQ</a>
+    <a class="nav-try" href="../try/">Try it</a><a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../#ai">AI</a><a href="../#deploy">Deploy</a><a href="../#honest">Honest limits</a><a href="../#resources">Resources</a><a href="../#pricing">Pricing</a><a href="../#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
@@ -46,22 +46,9 @@
   <picture class="pic"><img class="only-light" src="../assets/architecture-light.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"><img class="only-dark" src="../assets/architecture-dark.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"></picture>
 </section>
 <section id="install">
-  <div class="center"><p class="kicker">Try it</p><h2>Install it on your Mac or Linux laptop.</h2>
-  <p class="lede">One command starts the whole product on your own machine, with synthetic patients to look at. Apple Silicon, Intel and Linux (amd64 or arm64).</p></div>
-  <div class="grid">
-    <div class="card"><h3>1. A container engine</h3><p>Docker Desktop or OrbStack, or Podman. On a Mac with Homebrew: <code>brew install podman podman-compose</code>, then <code>podman machine init</code> and <code>podman machine start</code>. On Linux: your package manager's <code>podman</code> and <code>podman-compose</code>, or Docker with the compose plugin. You also need <code>curl</code>; add Node 20 or later if you want the sample data.</p></div>
-    <div class="card"><h3>2. One command</h3><p>Downloads the installer, checks its checksum, pulls the two images and starts everything. The first run takes a few minutes.</p></div>
-    <div class="card"><h3>3. Sign in as a doctor</h3><p>Open the address the installer prints (port 8443, this machine only), accept the browser's warning for the self-signed certificate, choose <strong>Continue with single sign-on</strong>, then pick <strong>Dr. Meera Rao</strong>. There is no password in demo mode.</p></div>
-  </div>
-  <pre class="cmd" tabindex="0" aria-label="Install command"><code>curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- up --demo --seed</code></pre>
-  <h3 class="center" id="windows">On Windows</h3>
-  <p class="center small">Windows runs it inside WSL 2 (Windows 10 version 2004 or later, or Windows 11). Run <code>wsl --install -d Ubuntu</code> once in an administrator PowerShell and restart, then use Docker Desktop with WSL integration switched on, or add <code>-InstallPodman</code> to the command and it sets up podman inside WSL for you. <strong>Not yet verified on a Windows PC:</strong> tell us what you see.</p>
-  <pre class="cmd" tabindex="0" aria-label="Windows install command"><code>&amp; ([scriptblock]::Create((irm https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.ps1))) up --demo --seed</code></pre>
-  <div class="grid two">
-    <div class="card"><h3>Check and remove</h3><p>Run <code>~/.zyvora/zyvora test</code> to check that everything answers. <code>~/.zyvora/zyvora uninstall</code> removes the containers and their data. The installer opens your browser when it is ready, and starts podman's small Linux VM for you on a Mac.</p></div>
-    <div class="card"><h3>Real sign-in</h3><p>Replace <code>--demo --seed</code> with <code>--with-demo-users</code> to start Keycloak as well, with a generated admin password kept in <code>~/.zyvora/env</code>. Details are in the <a href="https://github.com/zyvorai/zyvor-zyvora-site/releases/latest">release notes</a>.</p></div>
-  </div>
-  <p class="center small">For evaluation with synthetic data only: no real patient data, and nothing here is a clinical or regulatory claim. The script is short and writes only under <code>~/.zyvora</code>; read it first at the release page if you like.</p>
+  <div class="center"><p class="kicker">Try it</p><h2>Install it on your own computer.</h2>
+  <p class="lede">One command on a Mac, Windows or Linux computer starts the whole product with invented patients, in about five minutes. A guided page walks through every step with pictures, and a checklist for a doctor to test it.</p>
+  <p><a class="btn primary" href="../try/">Open the guided trial</a></p></div>
 </section>
 <section class="tint">
   <div class="center"><p class="kicker">Verified</p><h2>What has actually been run.</h2></div>
