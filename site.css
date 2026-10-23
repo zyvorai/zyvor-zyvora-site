@@ -126,3 +126,6 @@ section.tint{background:var(--bg2);box-shadow:0 0 0 100vmax var(--bg2);clip-path
 .clip figcaption{margin-top:10px;color:var(--dim);font-size:15px;text-align:center}
 .clip .play{position:absolute;left:50%;top:calc(50% - 20px);transform:translate(-50%,-50%);min-width:84px;min-height:44px;border-radius:999px;border:0;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.25)}
 .clip .play:hover{filter:brightness(1.08)}.clip.on .play{display:none}
+
+.cmd{margin:20px auto 0;max-width:980px;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow-x:auto;font:14px/1.6 var(--mono);white-space:pre}.cmd code{user-select:all}.cmd:focus-visible{outline:none;box-shadow:var(--focus)}#install .grid.two{max-width:980px;margin-inline:auto}p.small{font-size:13px;color:var(--dim);max-width:70ch;margin:24px auto 0}
+#install .card code,#install p.small code{overflow-wrap:anywhere}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Deploy | ZYVORA</title>
-<meta name="description" content="Run ZYVORA on Docker Compose, a Helm chart, or k3s with Keycloak sign-in and an Envoy edge; what has been verified and what has not.">
+<meta name="description" content="Install ZYVORA on a Mac or Linux laptop with one command, or run it on Docker Compose, a Helm chart, or k3s with Keycloak sign-in and an Envoy edge; what has been verified and what has not.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://zyvorai.github.io/zyvor-zyvora-site/deploy/">
 <link rel="icon" href="../assets/mark-light.svg" type="image/svg+xml">
@@ -44,6 +44,21 @@
     <div class="card"><h3>k3s with Keycloak and Envoy</h3><p>Keycloak (Haven packaging) for sign-in, Envoy Gateway as the TLS edge with a session check, and CloudNativePG for the database.</p></div>
   </div>
   <picture class="pic"><img class="only-light" src="../assets/architecture-light.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"><img class="only-dark" src="../assets/architecture-dark.svg" alt="Browser, Envoy edge, nginx, Rust API, PostgreSQL with row-level security; identity, audit, optional AI and FHIR around the API" loading="lazy"></picture>
+</section>
+<section id="install">
+  <div class="center"><p class="kicker">Try it</p><h2>Install it on your Mac or Linux laptop.</h2>
+  <p class="lede">One command starts the whole product on your own machine, with synthetic patients to look at. Apple Silicon, Intel and Linux (amd64 or arm64).</p></div>
+  <div class="grid">
+    <div class="card"><h3>1. A container engine</h3><p>Docker Desktop or OrbStack, or Podman. On a Mac with Homebrew: <code>brew install podman podman-compose</code>, then <code>podman machine init</code> and <code>podman machine start</code>. On Linux: your package manager's <code>podman</code> and <code>podman-compose</code>, or Docker with the compose plugin. You also need <code>curl</code>; add Node 20 or later if you want the sample data.</p></div>
+    <div class="card"><h3>2. One command</h3><p>Downloads the installer, checks its checksum, pulls the two images and starts everything. The first run takes a few minutes.</p></div>
+    <div class="card"><h3>3. Sign in as a doctor</h3><p>Open the address the installer prints (port 8443, this machine only), accept the browser's warning for the self-signed certificate, choose <strong>Continue with single sign-on</strong>, then pick <strong>Dr. Meera Rao</strong>. There is no password in demo mode.</p></div>
+  </div>
+  <pre class="cmd" tabindex="0" aria-label="Install command"><code>curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- up --demo --seed</code></pre>
+  <div class="grid two">
+    <div class="card"><h3>Check and remove</h3><p>Run <code>~/.zyvora/app/deploy/install/install.sh test</code> to check that everything answers. <code>~/.zyvora/app/deploy/install/install.sh uninstall</code> removes the containers and their data.</p></div>
+    <div class="card"><h3>Real sign-in</h3><p>Replace <code>--demo --seed</code> with <code>--with-demo-users</code> to start Keycloak as well, with a generated admin password kept in <code>~/.zyvora/env</code>. Details are in the <a href="https://github.com/zyvorai/zyvor-zyvora-site/releases/latest">release notes</a>.</p></div>
+  </div>
+  <p class="center small">For evaluation with synthetic data only: no real patient data, and nothing here is a clinical or regulatory claim. The script is short and writes only under <code>~/.zyvora</code>; read it first at the release page if you like.</p>
 </section>
 <section class="tint">
   <div class="center"><p class="kicker">Verified</p><h2>What has actually been run.</h2></div>
