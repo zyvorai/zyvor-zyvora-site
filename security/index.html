@@ -40,7 +40,7 @@
 <section>
   <div class="grid">
     <div class="card"><h3>Tenant isolation</h3><p>PostgreSQL row-level security is forced on every tenant-owned table, so a query from one organisation cannot read another's rows even if application code is wrong. Global tables, such as the list of organisations, are not tenant-owned.</p></div>
-    <div class="card"><h3>Deny by default</h3><p>Nine roles, each with an explicit permission list. A route with no permission is refused. The full matrix is generated from the code, so the documentation cannot drift from behaviour.</p></div>
+    <div class="card"><h3>Deny by default</h3><p>Thirteen roles, each with an explicit permission list. A route with no permission is refused. The full matrix is generated from the code, so the documentation cannot drift from behaviour.</p></div>
     <div class="card"><h3>Sign-in and sessions</h3><p>OpenID Connect authorization code with PKCE (S256). Sessions live on the server, the token is stored hashed, and a session ends after 30 minutes idle or 8 hours in total. State-changing requests carry a CSRF token.</p></div>
     <div class="card"><h3>Audit trail</h3><p>Reads and changes are recorded in an append-only, hash-chained log, written in the same transaction as the change. A verify endpoint recomputes the chain.</p></div>
     <div class="card"><h3>Break-glass</h3><p>Restricted records open only with a stated reason, which is itself audited and then reviewed by a second person.</p></div>
@@ -49,7 +49,7 @@
 </section>
 <section class="tint">
   <div class="center"><p class="kicker">Roles</p><h2>Each role sees only its own work.</h2></div>
-  <picture class="pic"><img class="only-light" src="../assets/roles-light.svg" alt="Nine roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"><img class="only-dark" src="../assets/roles-dark.svg" alt="Nine roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"></picture>
+  <picture class="pic"><img class="only-light" src="../assets/roles-light.svg" alt="Thirteen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"><img class="only-dark" src="../assets/roles-dark.svg" alt="Thirteen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"></picture>
 </section>
 <section>
   <div class="center"><p class="kicker">AI and privacy</p><h2>Off by default. Drafts only.</h2></div>
