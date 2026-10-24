@@ -1,0 +1,32 @@
+name: The installer or the site does not work
+description: The one-command install, the demo or the website is not behaving as described.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check [Troubleshooting](https://github.com/zyvorai/zyvor-zyvora-site/blob/main/docs/TROUBLESHOOTING.md) first. ZYVORA is built and tested with **synthetic data only**. **Never include patient data or credentials.**
+  - type: dropdown
+    id: computer
+    attributes:
+      label: Your computer
+      options: [Mac (Apple silicon), Mac (Intel), Linux, "Windows (WSL 2)", The website only]
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: ZYVORA version
+      placeholder: "0.2.0"
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened?
+      description: What you did, what you saw, and what you expected. If the install ran, include the output of `~/.zyvora/zyvora test`.
+    validations: { required: true }
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Safe to share
+      options:
+        - label: I have not included patient data or credentials.
+          required: true
