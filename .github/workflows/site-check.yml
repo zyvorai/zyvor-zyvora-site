@@ -1,4 +1,5 @@
-# Checks every change to the site: no internal details in the files, then Chromium loads every page in both themes
+# Checks every change to the site: no internal details in the files, the README and docs (links, required statements, no
+# un-negated regulatory claims), then Chromium loads every page in both themes
 # (no console errors, images load, links resolve, axe-core finds no serious or critical issues, phone width does not overflow).
 name: Site check
 on:
@@ -16,6 +17,8 @@ jobs:
         run: scripts/leak-guard.sh
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24 }
+      - name: Docs check
+        run: node scripts/docs-check.mjs
       - run: npm install --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Site check
