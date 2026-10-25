@@ -16,7 +16,19 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
-### 0.3.1 (latest)
+### 0.4.0 (latest)
+
+Two AI features, a fix to a safety check, and an accessibility fix. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.3.1:
+
+- **Ask this chart:** on a patient's page, a question about that one patient's record ("what was the last potassium?", "any allergies?"). Every sentence of the answer names the parts of the record it came from and is checked against them; a sentence that cannot be tied to the record is left out and counted. It reads allergies, approved prescriptions, the last five signed visits, verified results and recent vitals, and nothing else, so "not in the record" means "not in those". Read-only, off with AI off (it then lists the parts of the record that share your words). **Not measured for accuracy.**
+- **Draft quality:** on the AI model checks screen, what doctors did with AI drafts (accepted, edited, rejected), by feature, model and prompt version, and what the grounding check found in consultation drafts. A measure of use, not of correctness; no patient and no per-clinician figures. A new permission, held by doctors and hospital administrators.
+- **Fix (safety check):** the grounding check for consultation drafts missed a claim such as "normal" or "no known allergies" when it came at the very end of a sentence. It now sees it. The first problems found on a statement are also kept when a doctor edits it. Re-scoring every recorded model run with the corrected check changed no published result.
+- **Fix (accessibility):** the hover colour of primary buttons now has enough contrast against its text (5.57:1; it was 4.32:1).
+- **Tools:** `ml/consult/rescore.sh` re-scores a finished model run with today's check.
+- **Upgrading:** one new database migration (a new kind of AI job) is applied by `upgrade`, which rolls back on failure.
+- **Checks:** 399 Rust tests, 521 API operations and 77 permissions; the browser suite passes on a fresh database.
+
+### 0.3.1
 
 A small fix release. Nothing else in the product changed since 0.3.0.
 
@@ -70,7 +82,7 @@ Each line should say `OK`. You do not have to do this for `get.sh`: it checks th
 To upgrade an existing install to a specific version with the bootstrap script:
 
 ```bash
-curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- upgrade --version 0.3.1
+curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- upgrade --version 0.4.0
 ```
 
 ## Real sign-in
