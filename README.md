@@ -28,7 +28,7 @@
 
 **Patients, wards, lab, pharmacy and billing in one secure place, with assistance that drafts and people who decide.**
 
-<sub>Registry · Scheduling · SOAP notes · Prescribing · Emergency · Wards and beds · Lab · Imaging · Pharmacy · Billing and insurance · Patient portal · Audit · FHIR · Draft-only AI</sub>
+<sub>Registry · Scheduling · Notes and charts · Prescribing · Emergency · Wards and theatre · Discharge · Lab and analysers · Imaging · Pharmacy · Billing and collections · Claims · Follow-up and care programmes · Patient portal · Audit · FHIR · Integration hub · Propose-only assistants</sub>
 
 </div>
 
@@ -43,7 +43,7 @@ This repository is the **public home of the ZYVORA website, its one-command inst
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/capabilities-dark.svg">
-  <img src="assets/capabilities-light.svg" alt="Five groups: clinical, hospital, business, governance, and AI with review" width="100%">
+  <img src="assets/capabilities-light.svg" alt="Five groups: clinical, hospital, business, governance, and assistants with review" width="100%">
 </picture>
 
 Every module, in plain words: **[Modules](docs/MODULES.md)**.
@@ -121,12 +121,12 @@ A modular monolith: one Rust service in front of PostgreSQL, a React progressive
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/security-dark.svg">
-  <img src="assets/security-light.svg" alt="Forced row-level security, nine roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" width="100%">
+  <img src="assets/security-light.svg" alt="Forced row-level security, thirteen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" width="100%">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/roles-dark.svg">
-  <img src="assets/roles-light.svg" alt="Nine roles, each limited to its own work: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, hospital admin, patient, platform admin" width="100%">
+  <img src="assets/roles-light.svg" alt="Thirteen roles, each limited to its own work: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient, platform admin" width="100%">
 </picture>
 
 Tenant isolation is enforced by the database (row-level security on every tenant-owned table). Sign-in is OIDC authorization code with PKCE; sessions are server-side, hashed, 30 minutes idle and 8 hours at most. **[Security overview](docs/SECURITY-OVERVIEW.md)** lists each control and, just as plainly, what has **not** been done. To report a vulnerability, read [SECURITY.md](SECURITY.md).

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Modules | ZYVORA</title>
-<meta name="description" content="The twelve ZYVORA modules, from patient registry and scheduling to emergency, wards, lab, pharmacy, billing and insights.">
+<meta name="description" content="ZYVORA modules, from patient registry and scheduling to emergency, wards, theatre, lab, pharmacy, billing, follow-up, care programmes and insights, with the limits of each.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://zyvorai.github.io/zyvor-zyvora-site/modules/">
 <link rel="icon" href="../assets/mark-light.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="ZYVORA"><meta property="og:title" content="Modules | ZYVORA"><meta property="og:description" content="The twelve ZYVORA modules, from patient registry and scheduling to emergency, wards, lab, pharmacy, billing and insights."><meta property="og:url" content="https://zyvorai.github.io/zyvor-zyvora-site/modules/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ZYVORA"><meta property="og:title" content="Modules | ZYVORA"><meta property="og:description" content="ZYVORA modules, from patient registry and scheduling to emergency, wards, theatre, lab, pharmacy, billing, follow-up, care programmes and insights, with the limits of each."><meta property="og:url" content="https://zyvorai.github.io/zyvor-zyvora-site/modules/">
 <meta property="og:image" content="https://zyvorai.github.io/zyvor-zyvora-site/assets/og.png"><meta property="og:image:alt" content="ZYVORA: the calm way to run a hospital"><meta name="twitter:card" content="summary_large_image">
 <script src="../theme.js"></script>
 <link rel="stylesheet" href="../site.css">
@@ -35,33 +35,39 @@
 <section class="hero sub-hero">
   <p class="kicker">Modules</p>
   <h1>Everything a day on the ward <em>needs.</em></h1>
-  <p class="lede">Twelve modules share one patient record, one sign-in and one audit trail.</p>
+  <p class="lede">The modules share one patient record, one sign-in and one audit trail. Each card says what exists; the limits are listed at the bottom of the page.</p>
 </section>
 <section>
   <div class="grid">
     <div class="card"><h3>Dashboard</h3><p>Today's timeline, the waiting room, trends and ward bed maps, tuned to the signed-in role.</p></div>
-    <div class="card"><h3>Patients</h3><p>Registry, allergies and history, with restricted records that open only through break-glass.</p></div>
-    <div class="card"><h3>Appointments</h3><p>Scheduling with no double-booking enforced in the database, check-in and a waiting room.</p></div>
-    <div class="card"><h3>Encounters</h3><p>SOAP notes, orders and prescribing, signing and amendments.</p></div>
+    <div class="card"><h3>Patients</h3><p>Registry, allergies and history, problems and immunisations, with restricted records that open only through break-glass.</p></div>
+    <div class="card"><h3>Appointments</h3><p>Scheduling with no double-booking enforced in the database, check-in and a waiting room; a missed visit opens a rebooking task.</p></div>
+    <div class="card"><h3>Encounters and prescribing</h3><p>SOAP notes, orders, prescribing with an honest safety report, signing and amendments.</p></div>
+    <div class="card"><h3>Consultation assistant</h3><p>With the patient's consent, a transcript becomes a draft whose every statement points to the lines it came from; a named clinician accepts, edits or rejects each one and signs.</p></div>
+    <div class="card"><h3>Templates and chart forms</h3><p>Skeleton note text and structured forms (a per-tooth map, right and left pairs, choices) that the hospital writes for its specialties. Nothing clinical ships in the software.</p></div>
     <div class="card"><h3>Emergency</h3><p>A tracking board with triage decision support (a trained classifier plus safety rules) and treatment-to-admission flow.</p></div>
-    <div class="card"><h3>Beds and admissions</h3><p>Admissions, transfers and discharge, with a bed map per ward.</p></div>
-    <div class="card"><h3>Laboratory</h3><p>Separate result entry and verification, critical alerts, and result history drawn against reference ranges.</p></div>
+    <div class="card"><h3>Beds, discharge and theatre</h3><p>Admissions and transfers with a bed map; discharge plans whose milestones are tasks with owners; theatre scheduling the database will not let overlap.</p></div>
+    <div class="card"><h3>Laboratory</h3><p>Separate result entry and verification, critical alerts, turnaround against the lab's own targets, home sample collection with a printable round.</p></div>
     <div class="card"><h3>Imaging</h3><p>Orders with a wrong-patient guard and radiologist-only reports.</p></div>
-    <div class="card"><h3>Pharmacy</h3><p>An expiry-first stock ledger, dispensing and returns. Drug-interaction and dose checks report &ldquo;unavailable&rdquo; until a drug database is connected.</p></div>
-    <div class="card"><h3>Billing and insurance</h3><p>Exact money arithmetic, tax rules held as data, idempotent payments, refunds and insurance claims.</p></div>
-    <div class="card"><h3>Insights</h3><p>Eleven operational metrics from a closed catalogue; there is no generated SQL.</p></div>
-    <div class="card"><h3>Audit and setup</h3><p>Audit viewer with chain verification and break-glass review; facilities, wards, formulary, tax rates and payers.</p></div>
+    <div class="card"><h3>Pharmacy and medication review</h3><p>An expiry-first stock ledger, dispensing and returns; before-admission, in-hospital and discharge lists compared by fixed rules. Interaction and dose checks report &ldquo;unavailable&rdquo; until a drug database is connected.</p></div>
+    <div class="card"><h3>Billing, finance and claims</h3><p>Exact money, tax rules as data, idempotent payments, refunds; events that never reached an invoice; collections; claim cases with checklists and frozen packets. Payment links are a labelled simulator.</p></div>
+    <div class="card"><h3>Follow-up and care programmes</h3><p>Reminders and questionnaires using wording a doctor approved, with the patient's consent and quiet hours checked at send time; long-term programmes whose ranges the hospital sets, with a coach queue.</p></div>
+    <div class="card"><h3>Assistants</h3><p>Discharge, claims, handover and reply-draft assistants that only propose: a person accepts or dismisses each suggestion. Off until an administrator turns them on.</p></div>
+    <div class="card"><h3>Protocols</h3><p>The hospital's own protocols, approved by a second person and immutable once approved; answers only from approved passages, with citations.</p></div>
+    <div class="card"><h3>Integration hub</h3><p>HL7 results and lab analyser messages (ASTM), matched to patients by identifier only, with quarantine and replay. Tested with simulated instruments.</p></div>
+    <div class="card"><h3>Insights</h3><p>Eleven operational metrics from a closed catalogue, a patient-journey funnel; there is no generated SQL.</p></div>
+    <div class="card"><h3>Audit and setup</h3><p>Audit viewer with chain verification and break-glass review; facilities, wards, formulary, tax rates, payers and switches.</p></div>
   </div>
 </section>
 <section class="tint">
   <div class="center"><p class="kicker">Also included</p><h2>Around the modules.</h2></div>
   <div class="grid two">
-    <div class="card"><h3>Patient portal</h3><p>A linked patient sees their own appointments, medicines, results and visit summaries, and can join a video visit.</p></div>
+    <div class="card"><h3>Patient portal</h3><p>A linked patient sees their own appointments, medicines, released results and visit summaries, home sample collection visits (without the address), follow-up and care programmes, and can join a video visit.</p></div>
     <div class="card"><h3>FHIR R4 (read-only)</h3><p>Patient, Encounter, Observation, AllergyIntolerance, MedicationRequest, Appointment and <code>$everything</code>.</p></div>
     <div class="card"><h3>Offline drafts</h3><p>A note typed without a connection is kept encrypted on the device and syncs when the connection returns.</p></div>
-    <div class="card"><h3>Draft-only AI</h3><p>Off by default, never writes to the record, and always reviewed by a named person.</p></div>
+    <div class="card"><h3>Assistants, with review</h3><p>Off by default. Drafts never write to the record without a named reviewer; the propose-only assistants can only create suggestions that a person accepts. No model is clinically validated.</p></div>
   </div>
-  <p class="foot center">Not built yet: automated backups, critical-result paging, e-prescription, a payment gateway, patient self-booking, other languages and a native mobile app.</p>
+  <p class="foot center">Not built yet: automated backups, critical-result paging, e-prescription, a real payment gateway (payment links are a simulator), WhatsApp and ABDM, patient self-booking, other languages and a native mobile app.</p>
 </section>
 </main>
 <footer>
