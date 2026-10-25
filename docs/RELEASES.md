@@ -16,7 +16,24 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
-### 0.2.0 (latest)
+### 0.3.1 (latest)
+
+A small fix release. Nothing else in the product changed since 0.3.0.
+
+- **Fix:** on the **AI model checks** screen, a retired test conversation showed the name of the doctor who *reviewed* it under "Retired", which read as if the reviewer had retired it. The label now says "reviewed by".
+
+### 0.3.0
+
+Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.2.0:
+
+- **Imaging operations:** a reading worklist with claim, report turnaround against targets the organisation sets, scanners and use, typed dose against reference levels, critical findings and follow-up tracking; a DICOM JSON modality worklist; header dose values offered for copying (never summed automatically).
+- **Records:** possible-duplicate detection and soft linking with read-through of the linked history (nothing is moved).
+- **Pharmacy:** part fills, completions and refills; draft prescription revision; controlled drugs with a second-person witness and a register.
+- **Care and money:** treatment courses, recurring appointments, payment terms and overdue, lab delta checks.
+- **Governance and AI:** a privacy watch over the audit trail (rules the organisation sets, reviewed once), plain-language result-explanation drafts (non-critical verified results, never sent by the system), HL7 mapping suggestions, read-only agent tools as GET endpoints, and a repeatable model-checking pipeline with clinician-written cases. A consultation-draft model was tried on a Mac mini GPU in three rounds and **none is recommended**; results are in the repository.
+- **Checks:** 381 Rust tests, 519 API operations, and a browser suite of 64 specs (20 opt-in specs skipped by design) passing on a fresh database.
+
+### 0.2.0
 
 One-command install for Mac, Windows (WSL 2) and Linux. New since 0.1.1:
 
@@ -53,7 +70,7 @@ Each line should say `OK`. You do not have to do this for `get.sh`: it checks th
 To upgrade an existing install to a specific version with the bootstrap script:
 
 ```bash
-curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- upgrade --version 0.2.0
+curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- upgrade --version 0.3.1
 ```
 
 ## Real sign-in
