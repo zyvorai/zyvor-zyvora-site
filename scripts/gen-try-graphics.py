@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes the light and dark SVG illustrations for the /try/ page (assets/try-*.svg) from one template each.
+"""Writes the light and dark SVG illustrations for the /try/ page (assets/try-*.svg) and the AI flow and review illustration (assets/ai-*.svg) from one template each.
 Run from the repository root:  python3 scripts/gen-try-graphics.py
 Colours follow site.css; every graphic carries a title and description for screen readers."""
 from pathlib import Path
@@ -102,12 +102,75 @@ def where(p):
                "On a Mac press Command and Space and type Terminal. On Windows press the Windows key and type PowerShell. On Linux press Control, Alt and T.", "".join(b), p)
 
 
+# ---- 4. the AI review flow (home page and /ai/) -----------------------------------------------------------------------
+def ai_flow(p):
+    items = [("1", "Note or transcript", "With the patient's consent"),
+             ("2", "Private model", "Identifiers removed first"),
+             ("3", "Draft", "Quotes the lines it came from"),
+             ("4", "Named clinician", "Accepts, edits or rejects"),
+             ("5", "Audit chain", "Bound to the note revision")]
+    b = [t(640, 52, "The assistant drafts. A named clinician decides.", 30, 700, p=p, anchor="middle", ls=-0.8),
+         t(640, 84, "Off until an administrator turns it on. On a private server you control. Synthetic data only.", 17, 400, "dim", p=p, anchor="middle")]
+    w, gap, x0, y0, h = 224, 20, 40, 120, 220
+    for i, (n, head, sub) in enumerate(items):
+        x = x0 + i * (w + gap)
+        hl = i == 3
+        b.append(rect(x, y0, w, h, 20, "card", p, "accent" if hl else "line", 2.5 if hl else 1))
+        b.append(f'<circle cx="{x + 34}" cy="{y0 + 36}" r="16" fill="{p["accent"]}"/>' + t(x + 34, y0 + 42, n, 16, 700, "bg", "middle", p=p))
+        cx, cy = x + w // 2, y0 + 106
+        if i == 0:    # note lines
+            b += [rect(cx - 50, cy - 36, 100, 72, 10, "bg", p, "line")] + [rect(cx - 36, cy - 22 + k * 16, 72 - (k % 2) * 18, 6, 3, "line", p) for k in range(4)]
+        elif i == 1:  # server with lock
+            b += [rect(cx - 46, cy - 36, 92, 28, 8, "bg", p, "line"), rect(cx - 46, cy + 2, 92, 28, 8, "bg", p, "line"),
+                  f'<circle cx="{cx - 30}" cy="{cy - 22}" r="4" fill="{p["green"]}"/><circle cx="{cx - 30}" cy="{cy + 16}" r="4" fill="{p["green"]}"/>']
+        elif i == 2:  # draft with a citation marker
+            b += [rect(cx - 50, cy - 36, 100, 72, 10, "bg", p, "accent"), rect(cx - 36, cy - 22, 60, 6, 3, "accent", p), rect(cx - 36, cy - 6, 72, 6, 3, "line", p), rect(cx - 36, cy + 10, 48, 6, 3, "line", p),
+                  t(cx + 36, cy - 17, "[1]", 12, 700, "accent", "middle", p=p)]
+        elif i == 3:  # person and tick
+            b += [f'<circle cx="{cx}" cy="{cy - 14}" r="16" fill="{p["bg"]}" stroke="{p["accent"]}" stroke-width="3"/><path d="M{cx - 30} {cy + 34} q30 -40 60 0" fill="none" stroke="{p["accent"]}" stroke-width="3" stroke-linecap="round"/>',
+                  f'<circle cx="{cx + 34}" cy="{cy + 24}" r="14" fill="{p["green"]}"/><path d="M{cx + 27} {cy + 24} l5 5 l9 -11" fill="none" stroke="{p["bg"]}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>']
+        else:         # chain links
+            b += [rect(cx - 62 + k * 44, cy - 14, 36, 28, 8, "bg", p, "line", 2) for k in range(3)] + [f'<line x1="{cx - 26 + k * 44}" y1="{cy}" x2="{cx - 18 + k * 44}" y2="{cy}" stroke="{p["accent"]}" stroke-width="3"/>' for k in range(2)]
+        b += [t(x + w // 2, y0 + 176, head, 18, 700, p=p, anchor="middle", ls=-0.3), t(x + w // 2, y0 + 200, sub, 13, 400, "dim", p=p, anchor="middle")]
+        if i < 4:
+            ax = x + w + 2
+            b.append(f'<path d="M{ax} {y0 + h // 2} l16 0 m-6 -6 l6 6 l-6 6" fill="none" stroke="{p["dim"]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>')
+    b.append(t(640, 384, "Draft only: no tools, no actions, no generated SQL. No model has been clinically validated.", 14, 400, "dim", p=p, anchor="middle"))
+    return svg(1280, 410, "How an AI draft is reviewed",
+               "Draft only. A note or consented transcript goes to a private model after identifiers are removed. The draft quotes its sources. A named clinician accepts, edits or rejects it, and the review is bound to the note revision and recorded on the hash-chained audit trail. Synthetic data only.", "".join(b), p)
+
+
+# ---- 5. an illustrated review panel (rendered to shots/*-ai.jpg; clearly an illustration, not a screenshot) ---------------
+def ai_panel(p):
+    b = [rect(0, 0, 1440, 900, 0, "bg", p), rect(60, 60, 1320, 780, 24, "card", p, "line"),
+         t(100, 130, "Draft assessment and plan", 34, 700, p=p, ls=-0.8),
+         rect(1000, 98, 340, 44, 22, "warnbg", p), t(1170, 127, "DRAFT: clinician must review", 16, 700, "warn", "middle", p=p),
+         t(100, 168, "Synthetic patient · invented note · illustration, not a screenshot", 16, 400, "dim", p=p)]
+    rows = [("Subjective", "Cough for three days, worse at night. No fever reported.", "note line 2"),
+            ("Objective", "Temperature 36.8 °C. Chest clear on auscultation.", "note lines 5-6"),
+            ("Assessment", "Consider a viral upper respiratory infection.", "note lines 2, 6"),
+            ("Plan", "Fluids and rest. Review in one week if not improving.", "note line 8")]
+    y = 210
+    for head, body, cite in rows:
+        b += [rect(100, y, 780, 118, 16, "bg", p, "line"), t(128, y + 38, head, 15, 700, "accent", p=p, ls=0.5), t(128, y + 74, body, 21, 500, p=p),
+              t(128, y + 102, "Source: " + cite, 14, 400, "dim", p=p)]
+        y += 134
+    b += [rect(920, 210, 420, 524, 16, "bg", p, "line"), t(950, 252, "Review", 22, 700, p=p, ls=-0.4),
+          t(950, 288, "Reviewer: a named clinician", 15, 400, "dim", p=p), t(950, 312, "Bound to note revision 3", 15, 400, "dim", p=p)]
+    for k, (lab, hl) in enumerate([("Accept", True), ("Edit", False), ("Reject", False)]):
+        b += [rect(950, 352 + k * 66, 360, 50, 25, "accent" if hl else "bg", p, "accent"), t(1130, 384 + k * 66, lab, 18, 600, "bg" if hl else "accent", "middle", p=p)]
+    b += [t(950, 590, "Nothing joins the record until a", 15, 400, "dim", p=p), t(950, 612, "named clinician has reviewed it.", 15, 400, "dim", p=p),
+          t(950, 660, "Recorded on the audit chain.", 15, 400, "dim", p=p),
+          t(720, 806, "ILLUSTRATION · SYNTHETIC DATA · NOT A SCREENSHOT OF THE PRODUCT", 14, 700, "dim", "middle", p=p, ls=1.2)]
+    return svg(1440, 900, "Illustration of a draft review", "An illustration with invented text: a draft assessment and plan, each statement citing note lines, with Accept, Edit and Reject for a named clinician.", "".join(b), p)
+
+
 def main():
     out = Path("assets")
-    for name, fn in (("try-steps", steps), ("try-warning", warning), ("try-where", where)):
+    for name, fn in (("try-steps", steps), ("try-warning", warning), ("try-where", where), ("ai-flow", ai_flow), ("ai-panel", ai_panel)):
         for mode, p in PAL.items():
             (out / f"{name}-{mode}.svg").write_text(fn(p), encoding="utf-8")
-    print("wrote", ", ".join(sorted(f.name for f in out.glob("try-*.svg"))))
+    print("wrote", ", ".join(sorted(f.name for f in out.glob("*.svg"))))
 
 
 if __name__ == "__main__":

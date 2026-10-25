@@ -10,6 +10,7 @@ We would rather you hear it from us. Each line is stated in the product's own do
 | **Certification** | Not certified against HIPAA, GDPR, ISO 27001, SOC 2, IEC 62304, NABH/JCI or similar. A gap list is published. |
 | **Security review** | No independent penetration test yet. The audit trail is tamper-evident, not tamper-proof against a database owner. |
 | **Clinical safety** | No clinical validation of any model. Drug-interaction and dose checks report `unavailable` where there is no drug database; they never say "passed". |
+| **AI clinical validation** | No model has been clinically validated. Review is mandatory. |
 | **Integrations** | FHIR R4 is read-only. Only FluxVM has been verified live; Netra and Nuvora are tested against stand-ins. |
 | **Scale** | No load testing yet. Browser tests run in Chrome only, and there has been no screen-reader testing. |
 | **Messaging and alerts** | Not a certified paging system: no pager or nurse-call integration. Email and SMS have been tested only against local sinks, never a real provider. |

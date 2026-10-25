@@ -19,7 +19,7 @@
   var state = { mode: root.getAttribute("data-theme") === "dark" ? "dark" : "light", view: "dashboard" };
   var LABEL = {
     light: "light", dark: "dark",
-    dashboard: "The day at a glance", beds: "Beds and admissions", lab: "Laboratory", encounter: "An encounter", emergency: "Emergency board", insights: "Insights", billing: "Billing", patients: "Patients"
+    dashboard: "The day at a glance", beds: "Beds and admissions", lab: "Laboratory", encounter: "An encounter", emergency: "Emergency board", insights: "Insights", billing: "Billing", patients: "Patients", ai: "Draft with citations — clinician must review"
   };
   var img = document.getElementById("shot"), cap = document.getElementById("shot-cap");
   var groups = [].slice.call(document.querySelectorAll(".seg"));
@@ -37,6 +37,7 @@
     var src = "shots/" + state.mode + "-" + state.view + ".jpg";
     var text = LABEL[state.view] + " · " + LABEL[state.mode] + " · synthetic data";
     var alt = "ZYVORA: " + LABEL[state.view] + ", " + LABEL[state.mode] + " appearance, synthetic data";
+    if (state.view === "ai") { text += " · illustration, not a screenshot"; alt = "Illustration, not a screenshot: a draft assessment and plan with source lines, and Accept, Edit and Reject for a named clinician. Draft only, " + LABEL[state.mode] + " appearance, synthetic data"; }
     syncControls();
     if (!img || img.getAttribute("src") === src) { if (cap) cap.textContent = text; return; }
     img.classList.add("swap");

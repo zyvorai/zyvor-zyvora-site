@@ -34,7 +34,7 @@
     <span>ZYVORA</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a class="nav-try" href="try/">Try it</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="#ai">AI</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <a class="nav-try" href="try/">Try it</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="ai/">AI</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
@@ -49,10 +49,10 @@
 <section class="hero" id="top">
   <p class="kicker">Zyvor AI Labs · Healthcare OS</p>
   <h1>The calm way to run a <em>hospital.</em></h1>
-  <p class="lede"><strong>Patients, wards, lab, pharmacy and billing in one secure place.</strong> Assistance that drafts, people who decide, and an audit trail you can verify.</p>
-  <div class="cta"><a class="btn primary" href="try/">Try it on your computer</a><a class="btn" href="#see">See it in action</a><a class="btn" href="mailto:sales@zyvor.dev?subject=ZYVORA%20pilot">Ask about a pilot</a></div>
+  <p class="lede"><strong>Patients, wards, lab, pharmacy and billing in one secure place.</strong> Assistance that drafts, people who decide, and an audit trail you can verify. <strong>Private AI that only drafts. A named clinician reviews every suggestion. Full audit trail.</strong></p>
+  <div class="cta"><a class="btn primary" href="try/">Try it on your computer</a><a class="btn" href="#ai">How the AI works</a><a class="btn" href="#see">See it in action</a><a class="btn" href="mailto:sales@zyvor.dev?subject=ZYVORA%20pilot">Ask about a pilot</a></div>
   <ul class="chips" aria-label="Status">
-    <li class="ok">Pilot-ready</li><li>Self-hosted</li><li>AI off by default</li><li class="warn">Synthetic data only</li><li class="warn">Not yet certified</li>
+    <li class="ok">Pilot-ready</li><li>Self-hosted</li><li class="ok">Private AI</li><li class="ok">Draft only</li><li class="ok">Named review required</li><li>AI off by default</li><li class="warn">Synthetic data only</li><li class="warn">Not yet certified</li>
   </ul>
   <div class="window" role="group" aria-label="A screenshot of the ZYVORA dashboard (synthetic data)"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
     <img class="only-light" src="shots/hero-light.jpg" alt="ZYVORA dashboard: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1200" height="750" fetchpriority="high" decoding="async"><img class="only-dark" src="shots/hero-dark.jpg" alt="ZYVORA dashboard in dark mode: today's timeline, waiting room, trends and ward bed maps (synthetic data)" width="1200" height="750" loading="lazy" decoding="async"></div>
@@ -84,7 +84,7 @@
 </section>
 
 <section id="see" class="tint">
-  <div class="center"><p class="kicker">See it</p><h2>Real screens, real data model.</h2><p class="sub">Captured from the running application. Every patient and number shown is synthetic.</p></div>
+  <div class="center"><p class="kicker">See it</p><h2>Real screens, real data model.</h2><p class="sub">Captured from the running application. Every patient and number shown is synthetic. The AI review view is an illustration with invented text, not a screenshot.</p></div>
   <div class="controls">
     <div class="seg" role="radiogroup" aria-label="Screen" data-key="view">
       <button type="button" role="radio" aria-checked="true" data-value="dashboard">Dashboard</button>
@@ -94,6 +94,7 @@
       <button type="button" role="radio" aria-checked="false" data-value="emergency">Emergency</button>
       <button type="button" role="radio" aria-checked="false" data-value="insights">Insights</button>
       <button type="button" role="radio" aria-checked="false" data-value="billing">Billing</button>
+      <button type="button" role="radio" aria-checked="false" data-value="ai">AI review</button>
     </div>
     <div class="seg" role="radiogroup" aria-label="Appearance" data-key="mode">
       <button type="button" role="radio" aria-checked="true" data-value="light">Light</button>
@@ -129,7 +130,7 @@
 <section id="security" class="tint">
   <div class="center"><p class="kicker">Security and privacy</p><h2>Built to be trusted with patient records.</h2><p class="sub">The database keeps tenants apart, every call is authorised, and everything that touches a record is on the audit trail.</p></div>
   <picture class="pic"><img class="only-light" src="assets/security-light.svg" alt="Forced row-level security, thirteen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"><img class="only-dark" src="assets/security-dark.svg" alt="Forced row-level security, thirteen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"></picture>
-  <p class="foot center">Not yet independently penetration-tested or certified. <a class="more" href="#honest">Read the honest limits</a> <a class="more" href="security/">Security in detail</a></p>
+  <p class="foot center">Not yet independently penetration-tested or certified. <a class="more" href="#honest">Read the honest limits</a> <a class="more" href="security/">Security in detail</a> <a class="more" href="resources/ZYVORA-Security-and-privacy-posture.pdf">Security posture (PDF)</a></p>
 </section>
 
 <section id="ai">
@@ -140,7 +141,25 @@
     <div class="card rv"><span class="tag t-d">Bounded</span><h3>No actions, no generated SQL</h3><p>Drafting assistants have no tools. Four propose-only assistants (discharge, claims, handover and reply drafts) can read only what the signed-in person may read, may cite only what a tool returned, and propose tasks that a person accepts or dismisses: none can send, order, sign or submit. Questions about the hospital run over a closed catalogue of eleven metrics.</p></div>
     <div class="card rv"><span class="tag t-a">Limits</span><h3>Not clinically validated</h3><p>No model here has been clinically validated. One live check against a small local model mis-filed an assessment under objective, which is why review is mandatory.</p></div>
   </div>
-  <p class="center"><a class="more" href="#honest">What we have and have not verified</a></p>
+  <picture class="pic ai-flow"><img class="only-light" src="assets/ai-flow-light.svg" alt="AI review flow, draft only: a note or consented transcript goes to a private model after identifiers are removed, the draft quotes its sources, a named clinician accepts, edits or rejects it, and the review is bound to the note revision and the audit chain. Synthetic data only." width="1280" height="410" loading="lazy"><img class="only-dark" src="assets/ai-flow-dark.svg" alt="AI review flow, draft only: a note or consented transcript goes to a private model after identifiers are removed, the draft quotes its sources, a named clinician accepts, edits or rejects it, and the review is bound to the note revision and the audit chain. Synthetic data only." width="1280" height="410" loading="lazy"></picture>
+  <div class="center"><h3 class="h-sm">Questions worth asking any EHR vendor about AI</h3><p class="sub">Here is how ZYVORA answers each, as stated in its own documentation. We make no claim about any other product.</p></div>
+  <div class="table-wrap"><table class="comparison-table">
+    <thead><tr><th>Question</th><th>ZYVORA</th><th>Ask any vendor</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Question">Is AI on by default?</td><td data-label="ZYVORA">Off by default; an administrator turns each assistant on per organisation.</td><td data-label="Ask any vendor">Is it off until we enable it?</td></tr>
+      <tr><td data-label="Question">Where does it run?</td><td data-label="ZYVORA">On a private OpenAI-compatible server you control, after identifiers are removed.</td><td data-label="Ask any vendor">Which server, and who operates it?</td></tr>
+      <tr><td data-label="Question">What can it do?</td><td data-label="ZYVORA">Draft or propose only. Nothing can send, order, sign or submit.</td><td data-label="Ask any vendor">Can it queue or place orders?</td></tr>
+      <tr><td data-label="Question">Who reviews?</td><td data-label="ZYVORA">A named clinician, bound to their own note revision.</td><td data-label="Ask any vendor">Is the reviewer named and tied to a revision?</td></tr>
+      <tr><td data-label="Question">Is it audited?</td><td data-label="ZYVORA">Append-only, hash-chained, written in the same transaction as the change.</td><td data-label="Ask any vendor">Can we verify the audit trail ourselves?</td></tr>
+      <tr><td data-label="Question">Does it write SQL?</td><td data-label="ZYVORA">No. Questions run over a closed catalogue of eleven metrics.</td><td data-label="Ask any vendor">Is any query generated by the model?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout-india"><h3>Built for hospitals that run their own servers</h3><p>Self-hosted, with AI on a private model server you control. Languages other than English and ABDM are <b>not built yet</b>. Not certified. <a href="#honest">Read the honest limits</a>.</p></div>
+  <div class="ai-cta-band">
+    <div><h3>See a draft being reviewed.</h3><p>The demo includes a stand-in assistant. Real AI is off by default.</p></div>
+    <div class="cta"><a class="btn primary" href="try/">See the draft review in the demo</a><a class="btn" href="ai/">How the AI works</a><a class="btn" href="mailto:sales@zyvor.dev?subject=ZYVORA%20private%20AI%20pilot">Ask about private AI pilots</a></div>
+  </div>
+  <p class="center"><a class="more" href="#honest">What we have and have not verified</a> &nbsp; <a class="more" href="resources/ZYVORA-Executive-overview.pdf">Executive overview (PDF)</a></p>
 </section>
 
 <section id="deploy" class="tint">
@@ -157,6 +176,7 @@
       <tr><td>Data</td><td>Built and tested with <b>synthetic data only</b>.</td></tr>
       <tr><td>Certification</td><td><b>Not certified</b> against HIPAA, GDPR, ISO 27001, SOC 2, IEC 62304, NABH/JCI or similar. A gap list is published.</td></tr>
       <tr><td>Security review</td><td>No independent penetration test yet. The audit trail is tamper-evident, not tamper-proof against a database owner.</td></tr>
+      <tr><td>AI clinical validation</td><td>No model has been clinically validated. Review is mandatory.</td></tr>
       <tr><td>Clinical safety</td><td>No clinical validation of any model. Drug-interaction and dose checks report <i>unavailable</i> where there is no drug database; they never say "passed".</td></tr>
       <tr><td>Integrations</td><td>FHIR R4 is read-only. FluxVM has been verified live; the Nuvora wire contract against a real Nuvora process (its offline demo provider); Netra only against stand-ins. Lab analysers (ASTM and HL7) have been tried only with simulated instruments, never a real analyser.</td></tr>
       <tr><td>Scale</td><td>No load testing yet. Browser tests run in Chrome only, and there has been no screen-reader testing.</td></tr>
@@ -174,6 +194,7 @@
     <a class="card rv" href="resources/ZYVORA-Module-guide.pdf" style="text-decoration:none;color:inherit"><h3>Module guide</h3><p>What each module does.</p><span class="more">PDF</span></a>
     <a class="card rv" href="resources/ZYVORA-Integration-matrix.pdf" style="text-decoration:none;color:inherit"><h3>Integration matrix</h3><p>What connects, and what has actually been run.</p><span class="more">PDF</span></a>
   </div>
+  <div class="card evaluators"><h3>For evaluators</h3><p>Ask sales for the architecture PDF, the security gap list and private AI details.</p><a class="more" href="mailto:sales@zyvor.dev?subject=ZYVORA%20private%20AI%20pilot">Ask about private AI pilots</a></div>
 </section>
 
 <section id="pricing" class="tint">
@@ -193,7 +214,8 @@
 <section id="faq">
   <div class="center"><p class="kicker">Questions</p><h2>Straight answers.</h2></div>
   <details><summary>Is ZYVORA a certified medical product?</summary><p>No. It is pilot-ready software built and tested with synthetic data. It carries no regulatory certification and no clinical validation, and a published gap list says what is missing.</p></details>
-  <details><summary>Does the AI make clinical decisions?</summary><p>No. It is off by default, produces drafts only, has no tools and takes no actions. A named clinician must review a draft before it counts, and the review is tied to that clinician's own note revision.</p></details>
+  <details><summary>Does the AI make clinical decisions?</summary><p>No. It is off by default, produces drafts only, has no tools and takes no actions. A named clinician must review a draft before it counts, and the review is tied to that clinician's own note revision. It runs on a private server you control, the audit trail is hash-chained and written in the same transaction, and questions about the hospital run over a closed catalogue of metrics with no generated SQL. No model has been clinically validated. <a href="ai/">How the AI works</a>.</p></details>
+  <details><summary>Can we run the AI on our own models or Nuvora?</summary><p>The AI runs on a private OpenAI-compatible server you control. Nuvora, a self-hosted AI platform with that API, is the preferred back end, but its wire contract has been checked only against Nuvora's offline demo provider, not a live model. No model has been clinically validated and review is mandatory.</p></details>
   <details><summary>Where does our data live?</summary><p>On infrastructure you run: PostgreSQL with row-level security per organisation, behind the Rust API. Optional AI runs on a private server you choose, after identifiers are removed.</p></details>
   <details><summary>How do people sign in?</summary><p>Through your organisation's own identity provider with OpenID Connect and PKCE. ZYVORA never sees a password. The k3s deployment ships Keycloak (Haven's packaging) with a themed sign-in page.</p></details>
   <details><summary>Can we connect it to other systems?</summary><p>There is a read-only FHIR R4 API (Patient, Encounter, Observation, AllergyIntolerance, MedicationRequest, Appointment, <code>$everything</code>) and a documented HTTP API. FHIR writes are on the roadmap.</p></details>

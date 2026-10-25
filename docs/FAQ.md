@@ -6,7 +6,10 @@
 No. It is pilot-ready software built and tested with synthetic data. It carries no regulatory certification and no clinical validation, and a gap list says what is missing. See [Intended use and limits](INTENDED-USE.md).
 
 ### Does the AI make clinical decisions?
-No. It is **off by default**, produces **drafts only**, has **no tools and takes no actions.** A named clinician must review a draft before it counts, and the review is tied to that clinician's own note revision. There has been no clinical validation of any model.
+No. It is **off by default**, produces **drafts only**, has **no tools and takes no actions.** A named clinician must review a draft before it counts, and the review is tied to that clinician's own note revision. It runs on a private server you control, the audit trail is hash-chained and written in the same transaction, and questions about the hospital run over a closed catalogue of metrics with no generated SQL. There has been no clinical validation of any model.
+
+### Can we run the AI on our own models or Nuvora?
+The AI runs on a private OpenAI-compatible server you control. Nuvora, a self-hosted AI platform with that API, is the preferred back end, but its wire contract has been checked only against Nuvora's offline demo provider, not a live model. No model has been clinically validated and review is mandatory.
 
 ### Where does our data live?
 On infrastructure you run: PostgreSQL with row-level security per organisation, behind the Rust API. Optional AI runs on a private server you choose, after identifiers are removed.
