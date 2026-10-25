@@ -63,6 +63,9 @@ try {
     // gallery
     await page.getByRole("radio", { name: "Lab", exact: true }).click();
     await page.waitForFunction(() => document.getElementById("shot").getAttribute("src").includes("-lab"), null, { timeout: 5000 }).catch(() => check(false, "gallery did not switch to Lab"));
+    await page.getByRole("radio", { name: "AI review", exact: true }).click();
+    await page.waitForFunction(() => document.getElementById("shot").getAttribute("src").includes("-ai"), null, { timeout: 5000 }).catch(() => check(false, "gallery did not switch to AI review"));
+    check((await page.locator("#shot-cap").innerText()).includes("clinician must review"), "AI view caption says a clinician must review");
     await page.getByRole("radio", { name: "Dashboard", exact: true }).click();
     // clips stay still until played
     check(await page.locator(".clip img[src$=\".gif\"]").count() === 0, "a clip autoplays");
@@ -73,7 +76,7 @@ try {
     await ctx.close();
   }
   // sub-pages: load without errors, axe-clean in both themes, in-page and cross-page links resolve
-  for (const sub of ["security", "modules", "deploy", "try"]) {
+  for (const sub of ["security", "modules", "deploy", "try", "ai"]) {
     for (const scheme of ["light", "dark"]) {
       const ctx = await browser.newContext({ colorScheme: scheme, viewport: { width: 1440, height: 900 } });
       const pg = await ctx.newPage();
@@ -126,7 +129,7 @@ try {
   await mp.goto(base + "/", { waitUntil: "networkidle" });
   const overflow = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check(overflow <= 0, `phone width overflows by ${overflow}px`);
-  for (const sub of ["security", "modules", "deploy", "try"]) {
+  for (const sub of ["security", "modules", "deploy", "try", "ai"]) {
     await mp.goto(`${base}/${sub}/`, { waitUntil: "networkidle" });
     const o = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     check(o <= 0, `/${sub}/ overflows by ${o}px on a phone`);
