@@ -17,7 +17,7 @@
 </p>
 
 <p>
-  <a href="https://zyvorai.github.io/zyvor-zyvora-site/"><img alt="Website" src="https://img.shields.io/badge/Website-0071e3?style=for-the-badge"></a>
+  <a href="https://zyvora.zyvor.dev/"><img alt="Website" src="https://img.shields.io/badge/Website-0071e3?style=for-the-badge"></a>
   <a href="#try-it-in-about-five-minutes"><img alt="Try it" src="https://img.shields.io/badge/Try%20it-34c759?style=for-the-badge"></a>
   <a href="docs/README.md"><img alt="Docs" src="https://img.shields.io/badge/Docs-0071e3?style=for-the-badge"></a>
   <a href="docs/SECURITY-OVERVIEW.md"><img alt="Security" src="https://img.shields.io/badge/Security-0071e3?style=for-the-badge"></a>

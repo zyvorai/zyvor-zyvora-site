@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/</loc></url>
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/security/</loc></url>
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/modules/</loc></url>
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/deploy/</loc></url>
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/try/</loc></url>
-  <url><loc>https://zyvorai.github.io/zyvor-zyvora-site/ai/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/security/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/modules/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/deploy/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/try/</loc></url>
+  <url><loc>https://zyvora.zyvor.dev/ai/</loc></url>
 </urlset>
