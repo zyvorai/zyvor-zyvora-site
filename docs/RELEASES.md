@@ -16,6 +16,15 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
+### Next release (on the main branch, not yet published)
+
+These are built and tested in the product repository but are **not in 0.4.0** and have no download yet. Still pilot-ready software, synthetic data only, and no AI model has been clinically validated.
+
+- **Speech in several languages, installed on request:** an administrator can add speech for Hindi, Marathi, Malayalam, Tamil, Kannada, Telugu, Odia and others by listing a speech model per language. Nothing is installed by default and the server never downloads a model. On the consultation screen the clinician picks the language spoken. **No Indian-language speech model has been tested by us; read every transcript against what was said.**
+- **Summary for the patient, in the patient's language:** a draft of the latest signed visit in plain words, English sentences checked against the record, then translated. The translation is **not** checked against anything except that its numbers match the English; someone who reads the language must read it before the patient gets it. Nothing is saved or sent.
+- **Digits in any Indian script** (Odia, Bengali, Tamil, Telugu, Kannada, Malayalam, Gujarati, Gurmukhi, Devanagari) now count as the same number in the consultation grounding check.
+- **Dashboard and menu:** the dashboard shows "Loading" instead of false zeros while figures arrive, and the module bar gains an "All modules" menu when it does not fit, so no module is hidden.
+
 ### 0.4.0 (latest)
 
 Two AI features, a fix to a safety check, and an accessibility fix. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.3.1:
