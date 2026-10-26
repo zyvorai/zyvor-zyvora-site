@@ -16,6 +16,14 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
+### Next release (on the main branch, not yet published)
+
+These are built and tested in the product repository but are **not in 0.5.0** and have no download yet. Still pilot-ready software, synthetic data only.
+
+- **Starred patients:** a ☆ on a patient's page keeps them under "My patients" on your dashboard. Private to you, at most 50, restricted records drop out, nothing clinical stored.
+- **Thank-yous between colleagues:** a short note ("Thanks for covering the late round") shown only to the person thanked. Refused if it carries numbers, an email or a link, so it cannot be about a patient; at most ten a day; no scores or streaks.
+- **Your unfinished visits:** a doctor's dashboard lists their own visits waiting for their signature, then those still open, with a plain count signed in the last 24 hours. No target, no ranking.
+
 ### 0.5.0 (latest)
 
 Drafting help in the patient's language, a check before signing, and a better patient list. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.4.0:
