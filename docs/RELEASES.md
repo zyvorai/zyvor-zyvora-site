@@ -16,16 +16,24 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
-### Next release (on the main branch, not yet published)
+### 0.5.0 (latest)
 
-These are built and tested in the product repository but are **not in 0.4.0** and have no download yet. Still pilot-ready software, synthetic data only, and no AI model has been clinically validated.
+Drafting help in the patient's language, a check before signing, and a better patient list. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.4.0:
 
+- **Summary for the patient, in the patient's language, and medicine instructions:** a draft of the latest signed visit, or only the approved medicines with doses and days, in plain words, in 13 languages. The English sentences are checked against the record; the translation is **not** checked against anything except that its numbers match the English, so someone who reads the language must read it before the patient gets it. Nothing is saved or sent. Identifiers are removed before the model is called, on both calls.
+- **Referral letter draft:** you give the specialty and the reason in your own words; the facts about the patient come only from the record, each sentence cited and checked. Nothing is saved, sent or filed; you copy the text and send it yourself.
 - **Speech in several languages, installed on request:** an administrator can add speech for Hindi, Marathi, Malayalam, Tamil, Kannada, Telugu, Odia and others by listing a speech model per language. Nothing is installed by default and the server never downloads a model. On the consultation screen the clinician picks the language spoken. **No Indian-language speech model has been tested by us; read every transcript against what was said.**
-- **Summary for the patient, in the patient's language:** a draft of the latest signed visit in plain words, English sentences checked against the record, then translated. The translation is **not** checked against anything except that its numbers match the English; someone who reads the language must read it before the patient gets it. Nothing is saved or sent.
-- **Digits in any Indian script** (Odia, Bengali, Tamil, Telugu, Kannada, Malayalam, Gujarati, Gurmukhi, Devanagari) now count as the same number in the consultation grounding check.
-- **Dashboard and menu:** the dashboard shows "Loading" instead of false zeros while figures arrive, and the module bar gains an "All modules" menu when it does not fit, so no module is hidden.
+- **Before you sign:** while a visit is in review, a panel lists what would stop the signature and what is not recorded (no measurements, no allergy on file, an empty section). Plain rules, no AI. A reminder says something is not recorded, never that the patient has none.
+- **Patient list:** allergies, last signed visit and next appointment beside each name, for people who may read charts (front desk sees the plain list). A cell shows "…" while loading and "–" if it failed, never a false "none". Records a person may not open are left out.
+- **Allergy line beside the patient's name:** checking, "No allergies recorded" (never "no known allergies"), or the substances with severity.
+- **Menus shaped by role:** a "Your work" group first for each role; no module is hidden. The module bar gains an "All modules" menu when it does not fit, and the dashboard shows "Loading" instead of false zeros while figures arrive.
+- **Phones:** the search button no longer shows a keyboard chip, and small buttons are 44 px on touch screens.
+- **Digits in any Indian script** now count as the same number in the consultation grounding check.
+- **Fix:** the payment simulator's reference could contain a run of 13 digits and be refused by the card-number check (a few percent of simulated payments). Now shorter.
+- **Upgrading:** two new database migrations (new kinds of AI job) are applied by `upgrade`, which rolls back on failure.
+- **Checks:** 413 Rust tests, 525 API operations and 77 permissions.
 
-### 0.4.0 (latest)
+### 0.4.0
 
 Two AI features, a fix to a safety check, and an accessibility fix. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.3.1:
 
