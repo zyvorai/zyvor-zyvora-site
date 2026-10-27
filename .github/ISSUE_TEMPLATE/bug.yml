@@ -16,7 +16,7 @@ body:
     id: version
     attributes:
       label: ZYVORA version
-      placeholder: "0.5.0"
+      placeholder: "0.5.1"
   - type: textarea
     id: happened
     attributes:
