@@ -16,15 +16,18 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
-### Next release (on the main branch, not yet published)
+### 0.5.1 (latest)
 
-These are built and tested in the product repository but are **not in 0.5.0** and have no download yet. Still pilot-ready software, synthetic data only.
+Four small conveniences for everyday work. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.0:
 
-- **Starred patients:** a ☆ on a patient's page keeps them under "My patients" on your dashboard. Private to you, at most 50, restricted records drop out, nothing clinical stored.
-- **Thank-yous between colleagues:** a short note ("Thanks for covering the late round") shown only to the person thanked. Refused if it carries numbers, an email or a link, so it cannot be about a patient; at most ten a day; no scores or streaks.
-- **Your unfinished visits:** a doctor's dashboard lists their own visits waiting for their signature, then those still open, with a plain count signed in the last 24 hours. No target, no ranking.
+- **Starred patients:** a star on a patient's page keeps them under "My patients" on your dashboard. The list is private to you, holds at most 50, and leaves out records you may not open.
+- **Thank-yous between colleagues:** a short note to a colleague, shown only to the person thanked. It is refused if it has five or more digits in a row, an `@` or a link, so it cannot carry a patient number; ten a day at most per sender. No scores, no streaks.
+- **Your unfinished visits:** a doctor's own visits waiting for their signature first, then those still open, with a plain count signed in the last 24 hours. No targets, no ranking.
+- **Tip of the day:** one short tip about something the app really does, the same all day, only offered to people who can use it, and can be hidden for good.
+- **Upgrading:** two new database migrations (starred patients, thank-yous), applied by `upgrade`, which rolls back on failure.
+- **Checks:** 419 Rust tests, 531 API operations and 77 permissions. The full browser suite was last run at 0.5.0; the new specs were each run on their own.
 
-### 0.5.0 (latest)
+### 0.5.0
 
 Drafting help in the patient's language, a check before signing, and a better patient list. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.4.0:
 
