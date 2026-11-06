@@ -20,6 +20,8 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 Many new hospital departments, built since 0.5.1. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.1:
 
+> **Publishing in progress (6 November 2026):** the 0.5.2 container images are still being built and scanned. Until `ghcr.io/zyvorai/zyvora-api:0.5.2` and `zyvora-web:0.5.2` exist, the installer stops with a "manifest unknown" error; wait and run it again, or install 0.5.1.
+
 - **Patient-safety incidents:** any staff member reports a near miss, adverse event or sentinel event (patient optional, restricted records honoured); an administrator triages and assigns, records root cause and contributing factors, and closes with an outcome.
 - **Ambulance crew care record and ED pre-arrival:** append-only observations (vitals, GCS), drugs and interventions against a trip, a handover sign-off at the ED that closes the record, a once-only medico-legal form (police informed, MLC number, brought-by), and an incoming alert with a hand-entered ETA that pre-registers the patient on the ED board.
 - **Ward stock, barcodes and ward controlled-drug register:** par levels and an append-only ward stock ledger (issue from pharmacy, return, use), scan-by-barcode to receive or dispense, and a witnessed ward register of controlled drugs with a running balance.
