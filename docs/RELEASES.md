@@ -20,7 +20,6 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 Many new hospital departments, built since 0.5.1. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.1:
 
-> **Publishing in progress (6 November 2026):** the 0.5.2 container images are still being built and scanned. Until `ghcr.io/zyvorai/zyvora-api:0.5.2` and `zyvora-web:0.5.2` exist, the installer stops with a "manifest unknown" error; wait and run it again, or install 0.5.1.
 
 - **Patient-safety incidents:** any staff member reports a near miss, adverse event or sentinel event (patient optional, restricted records honoured); an administrator triages and assigns, records root cause and contributing factors, and closes with an outcome.
 - **Ambulance crew care record and ED pre-arrival:** append-only observations (vitals, GCS), drugs and interventions against a trip, a handover sign-off at the ED that closes the record, a once-only medico-legal form (police informed, MLC number, brought-by), and an incoming alert with a hand-entered ETA that pre-registers the patient on the ED board.
@@ -70,7 +69,7 @@ Many new hospital departments, built since 0.5.1. Pilot-ready software, syntheti
 - **Patient identifiers:** ABHA number, Emirates ID (check digit verified) and passport; masked in lists, whole number only for editors and audited, one patient per number, desk lookup.
 - **Prior authorisation tracking:** record what was asked of an insurer and the answer, a waiting list for the desk, expiry worked out.
 - **Upgrading:** new database migrations (0067 to 0109), applied by `upgrade`, which rolls back on failure.
-- **Checks:** the Rust test suite (no failures in the part of the run seen at release time), the web type check and build, `cargo deny` and `pnpm audit` passed on the maintainer's machine. The full browser suite, the hosted CI run and the secret scan had **not** completed when this was published; do not read this release as having had a full gate.
+- **Checks:** the Rust workspace tests on the tagged tree: **726 passed, 0 failed, 4 ignored** in 141 test binaries (on the maintainer's machine, against PostgreSQL), plus the web type check, build and 88 unit tests, `cargo deny` and `pnpm audit`. **Not done for this release:** the hosted continuous-integration run, the secret scan and the full browser suite. The images are published for amd64 and arm64.
 
 ### 0.5.1
 
