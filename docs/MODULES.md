@@ -94,4 +94,8 @@ ZYVORA's modules share one patient record, one sign-in, one audit trail and one 
 | Audit | Viewer with chain verification; every read and change of a record is recorded (metadata only) |
 | Privacy | A privacy impact assessment and an honest compliance gap list exist in the product documentation |
 
+## Coming in the next release
+
+Many more departments are built on the main branch and are **not in the latest release**: patient-safety incidents, inter-hospital referrals, dialysis, maternity, oncology, resistance surveillance, ambulance crew records, ward stock and controlled drugs, supplier invoices, demand and occupancy forecasts, saved dashboards, de-identified exports, device telemetry depth, and more. Each is described in the [release notes](RELEASES.md#versions) under "Next release". Same limits apply: pilot-ready, synthetic data only, not certified.
+
 Back to the [documentation index](README.md).
