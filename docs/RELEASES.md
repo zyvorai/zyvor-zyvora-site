@@ -16,9 +16,9 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
-### Next release (on the main branch, not yet published)
+### 0.5.2 (latest)
 
-These are built and tested in the product repository but are **not in 0.5.1** and have no download yet. Still pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated.
+Many new hospital departments, built since 0.5.1. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.1:
 
 - **Patient-safety incidents:** any staff member reports a near miss, adverse event or sentinel event (patient optional, restricted records honoured); an administrator triages and assigns, records root cause and contributing factors, and closes with an outcome.
 - **Ambulance crew care record and ED pre-arrival:** append-only observations (vitals, GCS), drugs and interventions against a trip, a handover sign-off at the ED that closes the record, a once-only medico-legal form (police informed, MLC number, brought-by), and an incoming alert with a hand-entered ETA that pre-registers the patient on the ED board.
@@ -68,9 +68,9 @@ These are built and tested in the product repository but are **not in 0.5.1** an
 - **Patient identifiers:** ABHA number, Emirates ID (check digit verified) and passport; masked in lists, whole number only for editors and audited, one patient per number, desk lookup.
 - **Prior authorisation tracking:** record what was asked of an insurer and the answer, a waiting list for the desk, expiry worked out.
 - **Upgrading:** new database migrations (0067 to 0109), applied by `upgrade`, which rolls back on failure.
-- **Checks:** the Rust test suite, the web type check and build, `cargo deny` and `pnpm audit` all passed on the maintainer's machine. The hosted continuous-integration run, Trivy, the secret scan and the full browser suite had **not** run on this code when this was written.
+- **Checks:** the Rust test suite (no failures in the part of the run seen at release time), the web type check and build, `cargo deny` and `pnpm audit` passed on the maintainer's machine. The full browser suite, the hosted CI run and the secret scan had **not** completed when this was published; do not read this release as having had a full gate.
 
-### 0.5.1 (latest)
+### 0.5.1
 
 Four small conveniences for everyday work. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.0:
 
