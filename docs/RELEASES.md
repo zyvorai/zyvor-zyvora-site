@@ -16,6 +16,12 @@ The files are on the [GitHub Releases page](https://github.com/zyvorai/zyvor-zyv
 
 ## Versions
 
+**Which version should I install?** The latest release, **0.5.2**, which is what the one-command installer fetches. Read down from the top: each entry says what changed. Special words are in the [glossary](GLOSSARY.md).
+
+### Next release (built and tested, not yet released)
+
+37 modules are finished on the main branch and will arrive together in the next release: notifiable diseases and registers, nursing scales and early warning scores, birth and death registration, infection control, waiting lists, handover, prescription documents, telemedicine rules, privacy and records governance, quality indicators, language access, terminology, tariffs, tax invoices, claim files, DRG grouping, scheme billing and more. Every one is described, with what it refuses and where its limits are, in **[Next release](NEXT-RELEASE.md)**. They are not in any download yet.
+
 ### 0.5.2 (latest)
 
 Many new hospital departments, built since 0.5.1. Pilot-ready software, synthetic data only; nothing here is certified and no AI model has been clinically validated. New since 0.5.1:

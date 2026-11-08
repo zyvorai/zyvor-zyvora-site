@@ -2,11 +2,20 @@
 
 **Pilot-ready software, not a certified medical product. Synthetic data only.**
 
-About five minutes, a hospital full of invented patients, no sign-up, nothing to buy, and **nothing leaves your machine.**
+> **In one minute.** One command installs a small demo hospital on your own computer, full of invented patients. It takes about five minutes, needs no sign-up, costs nothing, and **nothing leaves your machine.** When you are done, one command removes it.
+
+## Before you start
+
+| | |
+|---|---|
+| **Computer** | A Mac or a Linux machine. Windows works through WSL 2 (Windows' built-in Linux) but has not been verified on a real PC yet |
+| **Space and memory** | About 3 GB of disk and 2 GB of memory |
+| **Installed first** | Nothing. If there is no container engine, the installer offers to set one up, and **asks before it does anything** |
+| **Time** | About five minutes to install, ten for the test drive |
 
 ## 1. Install the demo
 
-**Mac or Linux.** Open a terminal, paste this and press Return:
+**Mac or Linux.** Open a terminal (on a Mac: Spotlight, then type "Terminal"), paste this and press Return:
 
 ```bash
 curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh | sh -s -- up --demo --seed
@@ -20,11 +29,11 @@ curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download
 
 > **Windows has not been verified on a real Windows PC yet.** The script is tested with simulated Windows calls only. If you try it, please [tell us what you see](#tell-us-how-it-went).
 
-You need nothing installed first. If there is no container engine, the installer offers to set one up (Homebrew then podman on a Mac; podman through apt or dnf on Linux; WSL and podman on Windows) and **asks before it does anything.** Answering no stops with the exact steps to do it yourself. On Windows, expect an administrator prompt and one restart the first time; afterwards run the same command again.
+If there is no container engine, the installer offers to set one up: Homebrew then podman on a Mac, podman through apt or dnf on Linux, WSL and podman on Windows. Answering no stops with the exact steps to do it yourself. On Windows, expect an administrator prompt and one restart the first time; afterwards run the same command again.
 
-### Read the installer first
+### Prefer to read the installer first?
 
-The installer is short and only writes under `~/.zyvora`. If you would rather read it before running it:
+Good instinct. It is short and only writes under `~/.zyvora`:
 
 ```bash
 curl -fsSL https://github.com/zyvorai/zyvor-zyvora-site/releases/latest/download/get.sh -o get.sh
@@ -32,7 +41,7 @@ less get.sh                      # read it
 sh get.sh up --demo --seed       # then run it
 ```
 
-It downloads the install bundle from the same release, **checks its SHA-256 against the release's `SHA256SUMS` and refuses to run on a mismatch**, then unpacks it under `~/.zyvora/app`. More on verifying files yourself: [Releases](RELEASES.md#verify-your-download).
+It downloads the install bundle from the same release, **checks its SHA-256 fingerprint against the release's `SHA256SUMS` and refuses to run on a mismatch**, then unpacks it under `~/.zyvora/app`. More on checking files yourself: [Releases](RELEASES.md#verify-your-download).
 
 ## 2. What you will see
 
@@ -42,7 +51,7 @@ It downloads the install bundle from the same release, **checks its SHA-256 agai
 
 ## 3. A doctor's test drive
 
-Eight things to try, about ten minutes.
+Eight things to try, about ten minutes. Each row says what to do and what you should see.
 
 | | What to do | You should see |
 |---|---|---|
@@ -56,6 +65,10 @@ Eight things to try, about ten minutes.
 | 8 | **Switch to dark mode.** Click the moon icon in the top bar. | The whole app changes appearance and remembers it. |
 
 The assistant that drafts notes is a **stand-in in the demo**, and every patient, result and number is invented. Nothing you type leaves your computer.
+
+### Want to see more?
+
+Sign out and back in as other demo users to see other jobs: the nurse, the receptionist, the pharmacist, the laboratory technician. [Modules](MODULES.md) lists everything ZYVORA does so you know what to look for.
 
 ## 4. Afterwards
 
@@ -77,6 +90,6 @@ The containers and their data are deleted; only a small settings folder, `~/.zyv
 
 ## Tell us how it went
 
-What worked, what confused you, what you wanted to see. If something failed, include the output of `~/.zyvora/zyvora test` and your computer type. Email [sales@zyvor.dev](mailto:sales@zyvor.dev?subject=ZYVORA%20demo%20feedback), or open a **Feedback** issue here (never include patient data or credentials).
+What worked, what confused you, what you wanted to see. If something failed, include the output of `~/.zyvora/zyvora test` and your computer type. Email [sales@zyvor.dev](mailto:sales@zyvor.dev?subject=ZYVORA%20demo%20feedback), or open a **Feedback** issue here. Never include patient data or credentials.
 
-Stuck? [Troubleshooting](TROUBLESHOOTING.md) · What ZYVORA is not: [Intended use and limits](INTENDED-USE.md)
+Stuck? [Troubleshooting](TROUBLESHOOTING.md) · What ZYVORA is not: [Intended use and limits](INTENDED-USE.md) · Unfamiliar word: [Glossary](GLOSSARY.md)
