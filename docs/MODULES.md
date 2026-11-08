@@ -2,7 +2,7 @@
 
 **Pilot-ready software, not a certified medical product. Synthetic data only.**
 
-> **In one minute.** ZYVORA's modules share one patient record, one sign-in, one audit trail and one permission model. This page lists them in two parts: first **the core** that every hospital uses daily, then **every department and specialty**, 82 documented modules in all. Modules marked *next release* are built and tested but not yet in version 0.5.2. Each table says what exists; the limits of a group are stated under it. Unfamiliar words are in the [glossary](GLOSSARY.md).
+> **In one minute.** ZYVORA's modules share one patient record, one sign-in, one audit trail and one permission model. This page lists them in two parts: first **the core** that every hospital uses daily, then **every department and specialty**, 84 documented modules in all. Modules marked *next release* are built and tested but not yet in version 0.5.2. Each table says what exists; the limits of a group are stated under it. Unfamiliar words are in the [glossary](GLOSSARY.md).
 
 **Jump to:** [The core](#the-core) · [Every department and specialty](#every-department-and-specialty) · [Coming in the next release](#coming-in-the-next-release)
 
@@ -86,7 +86,7 @@
 | Integration hub | HL7 v2 ADT and results by connector token, stored raw and de-duplicated, mapped by versioned rules, matched to patients by identifier only; uncertain matches wait for a person; replay |
 | Analysers | ASTM E1394 over HTTPS and over a TCP link, translated to the same intake; tested only with simulated instruments |
 | FHIR R4 | Read-only: Patient, Encounter, Observation, AllergyIntolerance, MedicationRequest, Appointment, `$everything` |
-| OpenAPI | One document and a typed client; 1,315 documented operations on the main branch (the latest release has fewer) |
+| OpenAPI | One document and a typed client; 1,330 documented operations on the main branch (the latest release has fewer) |
 | API keys and webhooks | Read-only role-scoped keys; signed outbound webhooks, off until an operator switches them on |
 | Edge | TLS, flood limits, a mutual-TLS listener for connecting systems, and an optional browser client-certificate gate |
 
@@ -94,7 +94,7 @@
 
 | Feature | What it does |
 |---|---|
-| Roles | 17 roles and 285 permissions on the main branch, deny by default, plus relationship and facility checks |
+| Roles | 17 roles and 286 permissions on the main branch, deny by default, plus relationship and facility checks |
 | Audit | Viewer with chain verification; every read and change of a record is recorded (metadata only) |
 | Privacy | A privacy impact assessment and an honest compliance gap list exist in the product documentation |
 
@@ -175,6 +175,7 @@ Each row is one module with its own page in the product documentation. A module 
 | **Insurance claim files** *(next release)* | Insurer file layouts as data, batches checked before export, insurer payment files imported by hand, and denials with an appeal trail. |
 | **Case-mix grouping** *(next release)* | Groups discharged stays by rules you load, with case-mix index and length of stay against benchmark. A model, not an official grouper. |
 | **Government scheme billing** *(next release)* | Public schemes with co-pay, caps and packages, enrolment, splitting a bill between scheme and patient, and balance alerts. |
+| **Insurance eligibility** *(next release)* | Records an eligibility answer for a policy, holds each insurer's rules (co-pay, deductible, yearly limit, prior approval), and shows the patient's and insurer's share at order time with warnings. |
 
 ### Operations, people and safety
 
@@ -210,6 +211,7 @@ Each row is one module with its own page in the product documentation. A module 
 | **HIV, TB and malaria follow-up** *(next release)* | Register templates, contact lists, and a list of patients who missed follow-up with logged attempts to reach them. |
 | **Immunisation schedules** *(next release)* | The hospital's own schedule, who is due or overdue, doses given and wasted, and a printable child health card. |
 | **Telemedicine rules** *(next release)* | Consent and visit type recorded for each tele-visit, the doctor's registration shown, and prescribing limited to an approved list. |
+| **National exchange messages** *(next release)* | Builds the message a national health exchange would expect (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR), scores how complete it is, and tries it on a local simulator. Nothing is sent anywhere. |
 
 ### Everyday and branding
 
@@ -223,6 +225,6 @@ Each row is one module with its own page in the product documentation. A module 
 
 ## Coming in the next release
 
-37 of the modules above are built and tested on the main branch and are **not in the latest release (0.5.2)**. They are described one by one, with what each refuses and where its limits are, in the **[next-release guide](NEXT-RELEASE.md)**. Same limits apply: pilot-ready, synthetic data only, not certified, and nothing here sends data to any outside system.
+39 of the modules above are built and tested on the main branch and are **not in the latest release (0.5.2)**. They are described one by one, with what each refuses and where its limits are, in the **[next-release guide](NEXT-RELEASE.md)**. Same limits apply: pilot-ready, synthetic data only, not certified, and nothing here sends data to any outside system.
 
 Back to the [documentation index](README.md).

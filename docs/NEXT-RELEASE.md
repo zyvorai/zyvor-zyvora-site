@@ -2,7 +2,7 @@
 
 **Pilot-ready software, not a certified medical product. Synthetic data only.**
 
-> **In one minute.** 37 modules are built and tested on the main branch but are **not in the latest release (0.5.2)**. Each entry below says what the module does, then what it refuses, so the limits are as visible as the features. Special words are in the [glossary](GLOSSARY.md).
+> **In one minute.** 39 modules are built and tested on the main branch but are **not in the latest release (0.5.2)**. Each entry below says what the module does, then what it refuses, so the limits are as visible as the features. Special words are in the [glossary](GLOSSARY.md).
 
 Every module here follows the same rules as the rest of ZYVORA: every action needs a permission (deny by default), restricted patients need a reasoned break-glass, one hospital never sees another's records, and records that must not change are append-only in the database as well as in the application. Nothing here sends data to any outside system, and nothing here is certified or clinically validated.
 
@@ -45,6 +45,12 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 **In short:** The hospital's own schedule, who is due or overdue, doses given and wasted, and a printable child health card.
 
 **The detail.** A hospital authors its own schedule (vaccine, dose number, earliest age, minimum interval from the previous dose, grace period, optional upper age) and the system computes due and overdue lists from each child's date of birth and the completed doses already in the chart, plus a defaulter view, per-vaccine session tallies (doses given and wasted, with a one-way void and a counts-only summary with wastage percentage) and a print-friendly child health card showing each dose as given, due, overdue, upcoming or waiting. Schedule doses never change (retire and re-author), tallies are never edited, restricted patients are off the lists and need break-glass for the card, other hospitals see nothing, and short reasons are refused with 422. Vaccine stock by lot and a registry export file are not included.
+
+### National exchange messages
+
+**In short:** Builds the message a national health exchange would expect (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR), scores how complete it is, and tries it on a local simulator. Nothing is sent anywhere.
+
+**The detail.** The administrator builds a message from a signed encounter for a country profile (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR; working approximations, not certified specifications), sees a completeness score (required fields count double, missing required fields named), queues it, and hands it to a built-in simulator that acknowledges it or rejects it with a reason. Rejections wait in a queue and can be resubmitted with a note; a third rejection makes the message dead and final. HL7 v2 profiles produce an ADT^A08 text, FHIR profiles a Bundle. It refuses unsigned encounters, a missing required field , a second live message for the same encounter and profile , a restricted patient without break-glass, and other hospitals (a "not found" answer). Messages never change after they are built, every transition is an append-only event, and nothing is sent to any network. Screen on the Integrations page.
 
 ## Ward safety and clinical workflow
 
@@ -239,5 +245,11 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 **In short:** Public schemes with co-pay, caps and packages, enrolment, splitting a bill between scheme and patient, and balance alerts.
 
 **The detail.** The hospital types in public-payer schemes (key, name, co-pay percent, default cap, alert threshold) with packages (case rate and cap), enrols a patient with member id, authorisation reference, amount authorised and validity dates, and splits an issued invoice into a scheme portion and a patient portion: the patient pays the co-pay rounded up, the scheme pays the rest up to the lowest of the authorised amount, package cap and scheme cap, and any excess falls back on the patient. A balance route raises a threshold or exhausted alert, and a statement of account lists the ledger with a running total. The ledger is append-only, concurrent splits on one enrolment are serialised, definitions and enrolments can only be switched off or cancelled with a reason, and restricted patients and other hospitals see nothing. Definitions are administrator-only (new write access); enrol, cancel and split use write access and reads use read access. There is no eligibility check, pre-authorisation or claim submission, and nothing contacts a payer.
+
+### Insurance eligibility
+
+**In short:** Records an eligibility answer for a policy, holds each insurer's rules (co-pay, deductible, yearly limit, prior approval), and shows the patient's and insurer's share at order time with warnings.
+
+**The detail.** Staff record an eligibility answer for a policy, either typed in from a payer portal or phone call or produced by a simulator that works from the policy dates held here; checks are append-only. An administrator defines payer rules per payer and service category (co-pay percent and fixed amount, deductible, yearly limit, prior approval needed, valid dates); a rule's terms never change and it can only be switched off. An order-time check returns the patient and payer share in whole minor units (deductible first, then co-pay rounded up, then anything over the yearly limit falls on the patient) with warnings for a policy out of force, no or stale or inactive eligibility, no rule, prior approval missing, and an approval past its last valid day. It stores nothing and sends nothing: no 270/271, NPHIES or health-card transport, and no promise of payment. Restricted patients need break-glass and other hospitals see nothing. Billing screen "Eligibility & payer rules".
 
 Back to the [modules overview](MODULES.md) or the [documentation index](README.md).

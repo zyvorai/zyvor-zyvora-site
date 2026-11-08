@@ -9,7 +9,7 @@
 ## About ZYVORA
 
 ### What is ZYVORA?
-Software for running a hospital or clinic: patient records, appointments, the emergency board, wards and beds, theatre, laboratory, imaging, pharmacy, billing and insurance, plus follow-up after the visit. 82 modules are documented; see [Modules](MODULES.md).
+Software for running a hospital or clinic: patient records, appointments, the emergency board, wards and beds, theatre, laboratory, imaging, pharmacy, billing and insurance, plus follow-up after the visit. 84 modules are documented; see [Modules](MODULES.md).
 
 ### Is ZYVORA a certified medical product?
 No. It is pilot-ready software built and tested with synthetic (invented) data. It carries no regulatory certification and no clinical validation, and a published gap list says what is missing. See [Intended use and limits](INTENDED-USE.md).
@@ -52,13 +52,13 @@ On infrastructure you run: a PostgreSQL database behind the ZYVORA service. Each
 Through your organisation's own identity provider, using OpenID Connect with PKCE. ZYVORA never sees a password. In the **demo**, every user is invented and needs no password.
 
 ### Who can see what?
-There are 17 roles and 285 separate permissions, and everything is **denied unless a role allows it.** Some actions need more than permission: only a patient's own doctor signs their note, only the ordering clinician releases a lab result. Records marked restricted open only through *break-glass* with a written reason, which an administrator reviews.
+There are 17 roles and 286 separate permissions, and everything is **denied unless a role allows it.** Some actions need more than permission: only a patient's own doctor signs their note, only the ordering clinician releases a lab result. Records marked restricted open only through *break-glass* with a written reason, which an administrator reviews.
 
 ### Can anyone change the history?
 Signed notes, results, payments, stock movements and the audit trail are *append-only*: corrections are new entries, never edits. The audit trail is also chained, so tampering is detectable. It is tamper-evident, not tamper-proof against someone who owns the database.
 
 ### Has it been security tested?
-There is an automated test suite (884 Rust tests and 88 web unit tests at the last full run) and automated accessibility checks. There has been **no independent penetration test**, no load test and no screen-reader testing. Details: [Security overview](SECURITY-OVERVIEW.md).
+There is an automated test suite (894 Rust tests and 88 web unit tests at the last full run) and automated accessibility checks. There has been **no independent penetration test**, no load test and no screen-reader testing. Details: [Security overview](SECURITY-OVERVIEW.md).
 
 ## Running it
 
@@ -77,14 +77,14 @@ The product source is private. This repository publishes the website, the instal
 Yes, in these ways, all tested only against simulated or written examples, never a real hospital system:
 - **FHIR R4**, *read-only*: Patient, Encounter, Observation, AllergyIntolerance, MedicationRequest, Appointment and everything-for-a-patient. It has not been run through the official validator.
 - **HL7 v2 and ASTM** messages from other systems and laboratory analysers, held for a person to check when a patient cannot be matched.
-- **A documented HTTP interface** (1,315 operations, one OpenAPI description) with read-only keys and signed outgoing webhooks, off until switched on.
+- **A documented HTTP interface** (1,330 operations, one OpenAPI description) with read-only keys and signed outgoing webhooks, off until switched on.
 
 Nothing in ZYVORA sends records to a national system, regulator, payer or tax authority by itself. Several modules in the [next release](NEXT-RELEASE.md) build the files or messages and let a person send them.
 
 ## Versions
 
 ### What is in the latest release, and what is not?
-The latest release is **0.5.2**. 37 more modules are built and tested but not yet released; they are listed one by one in [Next release](NEXT-RELEASE.md), and each carries a "next release" label in [Modules](MODULES.md).
+The latest release is **0.5.2**. 39 more modules are built and tested but not yet released; they are listed one by one in [Next release](NEXT-RELEASE.md), and each carries a "next release" label in [Modules](MODULES.md).
 
 ### How do I know my download is genuine?
 The installer checks a SHA-256 fingerprint against the release's `SHA256SUMS` and refuses to run on a mismatch. You can check by hand too: [Verify your download](RELEASES.md#verify-your-download).
