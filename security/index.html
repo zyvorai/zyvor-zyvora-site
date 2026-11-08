@@ -21,14 +21,14 @@
     <span>ZYVORA</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a class="nav-try" href="../try/">Try it</a><a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../ai/">AI</a><a href="../#deploy">Deploy</a><a href="../#honest">Honest limits</a><a href="../#resources">Resources</a><a href="../#pricing">Pricing</a><a href="../#faq">FAQ</a>
+    <a class="nav-try" href="../try/">Try it</a><a href="../#see">See it</a><a href="../#modules">Modules</a><a href="../#security">Security</a><a href="../ai/">AI</a><a href="../pilot/">Pilot</a><a href="../#deploy">Deploy</a><a href="../#honest">Honest limits</a><a href="../#resources">Resources</a><a href="../#pricing">Pricing</a><a href="../#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
       <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
       <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="btn primary small" href="mailto:sales@zyvor.dev?subject=ZYVORA">Talk to us</a>
+    <a class="btn primary small" href="../contact/">Talk to us</a>
   </div>
 </header>
 <main id="main">
@@ -40,7 +40,7 @@
 <section>
   <div class="grid">
     <div class="card"><h3>Tenant isolation</h3><p>PostgreSQL row-level security is forced on every tenant-owned table, so a query from one organisation cannot read another's rows even if application code is wrong. Global tables, such as the list of organisations, are not tenant-owned.</p></div>
-    <div class="card"><h3>Deny by default</h3><p>Thirteen roles, each with an explicit permission list. A route with no permission is refused. The full matrix is generated from the code, so the documentation cannot drift from behaviour.</p></div>
+    <div class="card"><h3>Deny by default</h3><p>Seventeen roles, each with an explicit permission list. A route with no permission is refused. The full matrix is generated from the code, so the documentation cannot drift from behaviour.</p></div>
     <div class="card"><h3>Sign-in and sessions</h3><p>OpenID Connect authorization code with PKCE (S256). Sessions live on the server, the token is stored hashed, and a session ends after 30 minutes idle or 8 hours in total. State-changing requests carry a CSRF token.</p></div>
     <div class="card"><h3>Audit trail</h3><p>Reads and changes are recorded in an append-only, hash-chained log, written in the same transaction as the change. A verify endpoint recomputes the chain.</p></div>
     <div class="card"><h3>Break-glass</h3><p>Restricted records open only with a stated reason, which is itself audited and then reviewed by a second person.</p></div>
@@ -49,7 +49,7 @@
 </section>
 <section class="tint">
   <div class="center"><p class="kicker">Roles</p><h2>Each role sees only its own work.</h2></div>
-  <picture class="pic"><img class="only-light" src="../assets/roles-light.svg" alt="Thirteen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"><img class="only-dark" src="../assets/roles-dark.svg" alt="Thirteen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"></picture>
+  <picture class="pic"><img class="only-light" src="../assets/roles-light.svg" alt="Seventeen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"><img class="only-dark" src="../assets/roles-dark.svg" alt="Seventeen roles: doctor, nurse, receptionist, lab technician, pharmacist, radiologist, discharge coordinator, theatre coordinator, integration operator, auditor, hospital admin, patient and platform admin, each limited to its own work" loading="lazy"></picture>
 </section>
 <section>
   <div class="center"><p class="kicker">AI and privacy</p><h2>Off by default. Drafts only.</h2></div>

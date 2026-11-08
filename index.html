@@ -34,14 +34,14 @@
     <span>ZYVORA</span>
   </a>
   <nav id="sections" aria-label="Sections">
-    <a class="nav-try" href="try/">Try it</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="ai/">AI</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <a class="nav-try" href="try/">Try it</a><a href="#see">See it</a><a href="#modules">Modules</a><a href="#security">Security</a><a href="ai/">AI</a><a href="pilot/">Pilot</a><a href="#deploy">Deploy</a><a href="#honest">Honest limits</a><a href="#resources">Resources</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
   </nav>
   <div class="bar-actions">
     <button id="theme" class="icon" type="button" aria-pressed="false" aria-label="Switch to dark mode">
       <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
       <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="btn primary small" href="mailto:sales@zyvor.dev?subject=ZYVORA">Talk to us</a>
+    <a class="btn primary small" href="contact/">Talk to us</a>
   </div>
 </header>
 
@@ -50,7 +50,7 @@
   <p class="kicker">Zyvor AI Labs · Healthcare OS</p>
   <h1>The calm way to run a <em>hospital.</em></h1>
   <p class="lede"><strong>Patients, wards, lab, pharmacy and billing in one secure place.</strong> Assistance that drafts, people who decide, and an audit trail you can verify. <strong>Private AI that only drafts. A named clinician reviews every suggestion. Full audit trail.</strong></p>
-  <div class="cta"><a class="btn primary" href="try/">Try it on your computer</a><a class="btn" href="https://try.zyvor.dev/" rel="noopener">Open the live demo</a><a class="btn" href="#ai">How the AI works</a><a class="btn" href="#see">See it in action</a><a class="btn" href="mailto:sales@zyvor.dev?subject=ZYVORA%20pilot">Ask about a pilot</a></div>
+  <div class="cta"><a class="btn primary" href="try/">Try it on your computer</a><a class="btn" href="https://try.zyvor.dev/" rel="noopener">Open the live demo</a><a class="btn" href="#ai">How the AI works</a><a class="btn" href="#see">See it in action</a><a class="btn" href="pilot/">See the pilot plan</a></div>
   <ul class="chips" aria-label="Status">
     <li class="ok">Pilot-ready</li><li>Self-hosted</li><li class="ok">Private AI</li><li class="ok">Draft only</li><li class="ok">Named review required</li><li>AI off by default</li><li class="warn">Synthetic data only</li><li class="warn">Not yet certified</li>
   </ul>
@@ -66,12 +66,12 @@
 </section>
 
 <section class="band" aria-label="By the numbers">
-  <div><b>360</b><span>Rust tests passing at the last full run, plus 54 browser specs</span></div>
-  <div><b>13</b><span>roles, deny by default</span></div>
-  <div><b>457</b><span>documented API operations</span></div>
+  <div><b>45</b><span>modules in release 0.5.2, and 37 more built and tested for the next one</span></div>
+  <div><b>17</b><span>roles, deny by default</span></div>
+  <div><b>1,000</b><span>documented API operations in release 0.5.2</span></div>
   <div><b>11</b><span>fixed insight metrics, no generated SQL</span></div>
 </section>
-<p class="foot">Counts come from the product's own documentation (<code>openapi.json</code>, the generated permission matrix, the metric catalogue and the validation report). Synthetic data only; not a certified medical product.</p>
+<p class="foot">Counts are for release 0.5.2 and come from the product's own generated documentation (<code>openapi.json</code>, the permission matrix, the module index and the metric catalogue). Synthetic data only; not a certified medical product.</p>
 
 <section id="who" class="center">
   <p class="kicker">Built for the whole building</p>
@@ -129,7 +129,7 @@
 
 <section id="security" class="tint">
   <div class="center"><p class="kicker">Security and privacy</p><h2>Built to be trusted with patient records.</h2><p class="sub">The database keeps tenants apart, every call is authorised, and everything that touches a record is on the audit trail.</p></div>
-  <picture class="pic"><img class="only-light" src="assets/security-light.svg" alt="Forced row-level security, thirteen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"><img class="only-dark" src="assets/security-dark.svg" alt="Forced row-level security, thirteen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"></picture>
+  <picture class="pic"><img class="only-light" src="assets/security-light.svg" alt="Forced row-level security, seventeen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"><img class="only-dark" src="assets/security-dark.svg" alt="Forced row-level security, seventeen roles, 30-minute idle sessions, OIDC with PKCE, an append-only audit chain, CSRF protection" loading="lazy"></picture>
   <p class="foot center">Not yet independently penetration-tested or certified. <a class="more" href="#honest">Read the honest limits</a> <a class="more" href="security/">Security in detail</a> <a class="more" href="resources/ZYVORA-Security-and-privacy-posture.pdf">Security posture (PDF)</a></p>
 </section>
 
@@ -157,7 +157,7 @@
   <div class="callout-india"><h3>Built for hospitals that run their own servers</h3><p>Self-hosted, with AI on a private model server you control. Languages other than English and ABDM are <b>not built yet</b>. Not certified. <a href="#honest">Read the honest limits</a>.</p></div>
   <div class="ai-cta-band">
     <div><h3>See a draft being reviewed.</h3><p>The demo includes a stand-in assistant. Real AI is off by default.</p></div>
-    <div class="cta"><a class="btn primary" href="try/">See the draft review in the demo</a><a class="btn" href="ai/">How the AI works</a><a class="btn" href="mailto:sales@zyvor.dev?subject=ZYVORA%20private%20AI%20pilot">Ask about private AI pilots</a></div>
+    <div class="cta"><a class="btn primary" href="try/">See the draft review in the demo</a><a class="btn" href="ai/">How the AI works</a><a class="btn" href="contact/?topic=pilot">Ask about private AI pilots</a></div>
   </div>
   <p class="center"><a class="more" href="#honest">What we have and have not verified</a> &nbsp; <a class="more" href="resources/ZYVORA-Executive-overview.pdf">Executive overview (PDF)</a></p>
 </section>
@@ -180,7 +180,7 @@
       <tr><td>Clinical safety</td><td>No clinical validation of any model. Drug-interaction and dose checks report <i>unavailable</i> where there is no drug database; they never say "passed".</td></tr>
       <tr><td>Integrations</td><td>FHIR R4 is read-only. FluxVM has been verified live; the Nuvora wire contract against a real Nuvora process (its offline demo provider); Netra only against stand-ins. Lab analysers (ASTM and HL7) have been tried only with simulated instruments, never a real analyser.</td></tr>
       <tr><td>Scale</td><td>No load testing yet. Browser tests run in Chrome only, and there has been no screen-reader testing.</td></tr>
-      <tr><td>Also not built yet</td><td>Automated backups, critical-result paging, e-prescription, a real payment gateway (payment links are a labelled simulator), WhatsApp (a labelled simulator), ABDM, patient self-booking, languages other than English, a native mobile app.</td></tr>
+      <tr><td>Also not built yet</td><td>Automated backups, critical-result paging, transmission of prescriptions, a real payment gateway (payment links are a labelled simulator), WhatsApp (a labelled simulator), a live ABDM gateway connection, patient self-booking, full translation (a first draft of Arabic and Hindi is in the next release), a released native mobile app.</td></tr>
     </tbody>
   </table>
 </section>
@@ -201,7 +201,7 @@
     <a class="card rv" href="resources/ZYVORA-Pilot-guide.pdf" style="text-decoration:none;color:inherit"><h3>Pilot guide</h3><p>Try the demo in an afternoon and decide what a pilot should prove.</p><span class="more">PDF</span></a>
     <a class="card rv" href="resources/ZYVORA-IT-and-security-questions.pdf" style="text-decoration:none;color:inherit"><h3>IT and security questions</h3><p>The questions your IT team will ask, answered plainly.</p><span class="more">PDF</span></a>
   </div>
-  <div class="card evaluators"><h3>For evaluators</h3><p>Ask sales for the architecture PDF, the security gap list and private AI details.</p><a class="more" href="mailto:sales@zyvor.dev?subject=ZYVORA%20private%20AI%20pilot">Ask about private AI pilots</a></div>
+  <div class="card evaluators"><h3>For evaluators</h3><p>Ask sales for the architecture PDF, the security gap list and private AI details.</p><a class="more" href="contact/?topic=pilot">Ask about private AI pilots</a></div>
 </section>
 
 <section id="pricing" class="tint">
@@ -233,7 +233,7 @@
 <section class="final">
   <h2>Ready for a pilot?</h2>
   <p class="lede">Tell us about your clinic or hospital. We will walk you through it with synthetic data first.</p>
-  <div class="cta"><a class="btn primary" href="mailto:sales@zyvor.dev?subject=ZYVORA%20pilot">Contact sales</a><a class="btn" href="mailto:security@zyvor.dev?subject=ZYVORA%20security%20questions">Security questions</a></div>
+  <div class="cta"><a class="btn primary" href="contact/?topic=pilot">Contact sales</a><a class="btn" href="mailto:security@zyvor.dev?subject=ZYVORA%20security%20questions">Security questions</a></div>
 </section>
 </main>
 
