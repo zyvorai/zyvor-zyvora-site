@@ -13,6 +13,7 @@ These pages are for people evaluating ZYVORA: clinicians, IT and security review
 | Understand it | |
 |---|---|
 | [Modules](MODULES.md) | What every module does |
+| [Next release](NEXT-RELEASE.md) | The 33 modules built since 0.5.2, in detail |
 | [Security overview](SECURITY-OVERVIEW.md) | Controls you can point at, and what has not been done |
 | [Intended use and limits](INTENDED-USE.md) | What ZYVORA is not, yet |
 | [Gallery](GALLERY.md) | Every screen and recording |

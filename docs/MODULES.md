@@ -96,6 +96,16 @@ ZYVORA's modules share one patient record, one sign-in, one audit trail and one 
 
 ## Coming in the next release
 
-Many more departments are built on the main branch and are **not in the latest release**: patient-safety incidents, inter-hospital referrals, dialysis, maternity, oncology, resistance surveillance, ambulance crew records, ward stock and controlled drugs, supplier invoices, demand and occupancy forecasts, saved dashboards, de-identified exports, device telemetry depth, and more. Each is described in the [release notes](RELEASES.md#versions) under "Next release". Same limits apply: pilot-ready, synthetic data only, not certified.
+33 more modules are built and tested on the main branch and are **not in the latest release (0.5.2)**. They are described one by one, with what each refuses and where its limits are, in the **[next-release guide](NEXT-RELEASE.md)**:
+
+| Group | Modules |
+|---|---|
+| Public health and programmes | Notifiable diseases and public-health reporting; Birth and death registration; Infection control; HMIS report export; Programme tracing; Immunisation schedules and defaulter lists |
+| Ward safety and clinical workflow | Nursing risk assessments and ward risk board; Early warning scores (NEWS2); Advance directives, code status and goals of care; Elective waiting list; Clinical handover (ISBAR); Open disclosure and serious event review; IT safety self-assessment and downtime drill register; Prescription documents; Telemedicine guideline workflow; Mental capacity, safeguarding and restrictive practice records; Medical device vigilance and UDI traceability |
+| Identity, language, codes and records | Regional patient identifiers and social name; Regulator registrations; Medical certificates; Code catalogue and coder workbench; Record export (patient summary document); Language access; Terminology service, phase 1 |
+| Privacy, governance and quality | Data-subject rights and breach register; Records governance; Release of information: disclosure ledger and withheld items; Medico-legal case register; Quality indicators and accreditation readiness |
+| Money and statutory rules | Statutory controlled-drug registers; Statutory discounts, exemptions and fee waivers; Mobile money and till reconciliation; Tariffs: payer rate cards, self-pay price list and non-binding estimates |
+
+Same limits apply: pilot-ready, synthetic data only, not certified. Nothing here sends data to any outside system.
 
 Back to the [documentation index](README.md).
