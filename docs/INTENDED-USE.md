@@ -14,7 +14,7 @@
 | **Clinical safety** | No clinical validation of any model. Drug-interaction and dose checks say `unavailable` where there is no drug database; they never say "passed". Scores and alerts are advisory aids. |
 | **AI** | Off by default, drafts only, review is mandatory. No accuracy figure is claimed. |
 | **Connections to other systems** | FHIR R4 is read-only. Only FluxVM has been verified live; Netra and Nuvora are tested against stand-ins. HL7 and ASTM have been tried with written messages and simulated instruments only. |
-| **Sending to outside bodies** | Nothing sends records to a regulator, registry, payer, tax authority, scheme or national exchange. Modules build the file or message and a person sends it. The national-exchange profiles are working approximations, not certified specifications. |
+| **Sending to outside bodies** | Nothing sends records to a regulator, registry, payer, tax authority, scheme or national exchange. Modules build the file or message and a person sends it. |
 | **Scale and testing** | No load testing. Browser tests run in Chrome only. No screen-reader testing. |
 | **Messaging and alerts** | Not a certified paging system: no pager or nurse-call connection. Email and SMS were tested only against local test sinks, never a real provider. |
 | **Reference content** | Code sets, terminologies, DRG rules, payer file layouts, accreditation clauses, tax rules and scheme packages are supplied by the hospital. Only small synthetic samples are built in. |
