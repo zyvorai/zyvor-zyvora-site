@@ -26,7 +26,7 @@ a{color:var(--link)}code{font-family:var(--mono)}
 .logo{width:32px;height:32px}
 #sections{display:flex;gap:2px;margin-left:8px;overflow-x:auto;scrollbar-width:none;flex:1}
 #sections::-webkit-scrollbar{display:none}
-#sections a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--dim);text-decoration:none;border-radius:99px;white-space:nowrap}
+#sections a{display:inline-flex;align-items:center;min-height:44px;padding:0 9px;color:var(--dim);text-decoration:none;border-radius:99px;white-space:nowrap}
 #sections a:hover{color:var(--text)}
 #sections a[aria-current="true"]{color:var(--text);background:var(--bg2);font-weight:600}
 .bar-actions{display:flex;align-items:center;gap:8px}
@@ -150,3 +150,13 @@ section.tint{background:var(--bg2);box-shadow:0 0 0 100vmax var(--bg2);clip-path
   .comparison-table td{border:0;padding:4px 18px}.comparison-table td::before{content:attr(data-label);display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600}
   .comparison-table td:first-child{font-size:17px}
 }
+
+/* Contact form, honest-gaps lists */
+.narrow{max-width:640px;margin:0 auto;text-align:left}
+.contact .row{display:grid;gap:6px;margin:0 0 16px}
+.contact label{font-weight:600;font-size:15px}
+.contact input,.contact select,.contact textarea{font:inherit;color:var(--text);background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.contact input:focus-visible,.contact select:focus-visible,.contact textarea:focus-visible{box-shadow:var(--focus)}
+.contact .note{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:12px 16px;margin:0 0 20px}
+.gaps{max-width:720px;margin:18px auto 0;padding:0 20px 0 44px;list-style:disc}
+.gaps li{margin:0 0 10px;color:var(--text)}

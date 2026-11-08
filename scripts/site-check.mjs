@@ -76,7 +76,7 @@ try {
     await ctx.close();
   }
   // sub-pages: load without errors, axe-clean in both themes, in-page and cross-page links resolve
-  for (const sub of ["security", "modules", "deploy", "try", "ai"]) {
+  for (const sub of ["security", "modules", "deploy", "try", "ai", "pilot", "contact", "regions", "regions/india", "regions/gulf", "regions/africa", "regions/southeast-asia", "regions/latin-america"]) {
     for (const scheme of ["light", "dark"]) {
       const ctx = await browser.newContext({ colorScheme: scheme, viewport: { width: 1440, height: 900 } });
       const pg = await ctx.newPage();
@@ -129,7 +129,7 @@ try {
   await mp.goto(base + "/", { waitUntil: "networkidle" });
   const overflow = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check(overflow <= 0, `phone width overflows by ${overflow}px`);
-  for (const sub of ["security", "modules", "deploy", "try", "ai"]) {
+  for (const sub of ["security", "modules", "deploy", "try", "ai", "pilot", "contact", "regions", "regions/india", "regions/gulf", "regions/africa", "regions/southeast-asia", "regions/latin-america"]) {
     await mp.goto(`${base}/${sub}/`, { waitUntil: "networkidle" });
     const o = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     check(o <= 0, `/${sub}/ overflows by ${o}px on a phone`);
