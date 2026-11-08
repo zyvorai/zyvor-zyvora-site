@@ -189,3 +189,7 @@ The whole list, with the reasoning: **[Intended use and limits](docs/INTENDED-US
 <sub>ZYVORA is built by [Zyvor AI Labs](https://zyvor.dev). The website files in this repository are generated from the product repository and are not edited by hand here. © 2026 Zyvor AI Labs. All rights reserved; ZYVORA is proprietary software and no application source is published. Synthetic data only · Not a certified medical product.</sub>
 
 </div>
+
+## Our strategic partner
+
+**[Medlius Pharma](https://medliuspharma.com/contact)** is a strategic partner of Zyvor AI Labs. Get in touch with them through [their website](https://medliuspharma.com/contact).
