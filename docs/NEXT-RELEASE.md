@@ -2,7 +2,7 @@
 
 **Pilot-ready software, not a certified medical product. Synthetic data only.**
 
-> **In one minute.** 39 modules are built and tested on the main branch but are **not in the latest release (0.5.2)**. Each entry below says what the module does, then what it refuses, so the limits are as visible as the features. Special words are in the [glossary](GLOSSARY.md).
+> **In one minute.** 54 modules are built and tested on the main branch but are **not in the latest release (0.5.2)**. Each entry below says what the module does, then what it refuses, so the limits are as visible as the features. Special words are in the [glossary](GLOSSARY.md).
 
 Every module here follows the same rules as the rest of ZYVORA: every action needs a permission (deny by default), restricted patients need a reasoned break-glass, one hospital never sees another's records, and records that must not change are append-only in the database as well as in the application. Nothing here sends data to any outside system, and nothing here is certified or clinically validated.
 
@@ -51,6 +51,18 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 **In short:** Builds the message a national health exchange would expect (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR), scores how complete it is, and tries it on a local simulator. Nothing is sent anywhere.
 
 **The detail.** The administrator builds a message from a signed encounter for a country profile (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR; working approximations, not certified specifications), sees a completeness score (required fields count double, missing required fields named), queues it, and hands it to a built-in simulator that acknowledges it or rejects it with a reason. Rejections wait in a queue and can be resubmitted with a note; a third rejection makes the message dead and final. HL7 v2 profiles produce an ADT^A08 text, FHIR profiles a Bundle. It refuses unsigned encounters, a missing required field , a second live message for the same encounter and profile , a restricted patient without break-glass, and other hospitals (a "not found" answer). Messages never change after they are built, every transition is an append-only event, and nothing is sent to any network. Screen on the Integrations page.
+
+### Mass-casualty mode
+
+**In short:** Activates a disaster plan, names incident command, keeps call-out lists and drill logs, and registers casualties under temporary IDs with triage colours. It records; it sends nothing.
+
+**The detail.** The administrator activates a disaster plan (mass casualty, external or internal disaster, pandemic surge) at level 1 to 3 with surge beds, names incident command roles, keeps standing call-out lists of staff, and logs drills. The ED doctor registers casualties under temporary IDs (MCI-XXXX-001) with red, yellow, green or black triage. Re-triage needs a reason and is logged, and each casualty is later linked once to the real patient record. It refuses a second active plan, any change to a stood-down plan, a role held twice, a restricted record without break-glass, another hospital's data, and anyone without the permission. Roles, triage events, call-out lists and drills are append-only. It sends nothing; SMS call-out through a gateway is deferred.
+
+### Occupational health
+
+**In short:** Staff fitness checks, vaccinations and sharps or splash exposures with follow-up, kept apart from HR and visible only to the staff member and occupational health.
+
+**The detail.** Staff health is kept apart from HR in a new occupational_health role. Fitness assessments (pre-employment, periodic, return to work, post-exposure) and vaccinations with booster status are append-only. A sharps or splash exposure is reported by the member of staff (or by occupational health for them) and followed up step by step: baseline test, source patient test, post-exposure prophylaxis started, completed, stopped or declined, and repeat tests. It closes with an outcome. It refuses: a closed exposure takes no more steps, and closing needs a baseline test and, when prophylaxis started, its completion or stop. Prophylaxis cannot be started twice or finished before it started. Restrictions are required for a conditional or unfit assessment. Every member of staff sees only their own record, and never the source patient or that patient's test results. The administrator and colleagues see none of it, and a restricted source patient needs break-glass. The summary is counts only. Eleven routes, three permissions (OccHealthOwn, read access, write access), page Occupational health, demo login occ-health.
 
 ## Ward safety and clinical workflow
 
@@ -119,6 +131,54 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 **In short:** A register of implanted devices by unique ID, matching safety notices to patients, and a report draft that is never sent.
 
 **The detail.** A hospital-wide register of implanted devices (kind, manufacturer, model, UDI-DI, lot, serial, expiry, patient), with a pasted GS1 UDI such as (01)...(17)...(10)...(21)... read into its fields, and a repeatable copy of implantable cath-lab devices into the register. The quality officer enters manufacturers' field safety notices by UDI-DI and/or lot; saving a notice matches it to registered devices (and a device registered later is matched against existing notices), each match is resolved once with a note, and a vigilance report can be drafted as text for a person to edit. It refuses a notice that names neither a UDI-DI nor a lot, a duplicate notice reference, a malformed UDI, a future implant time, short notes , a restricted patient without break-glass, and a second resolution. The register and notices are append-only, matches are never deleted, nothing is sent to any regulator or manufacturer, and another hospital sees nothing.
+
+### Pathology (tissue and cells)
+
+**In short:** Follows tissue and cell specimens from receipt through cutting and slides to a doctor's signed report, with later additions kept as addenda.
+
+**The detail.** Surgical, biopsy and cytology specimens are tracked from receipt (accession number PS-year-serial) through grossing, blocks and slides to a doctor's free-text report with sign-out, append-only addenda and turnaround against fixed targets (cytology 24 h, biopsy 48 h, surgical 72 h). It refuses sign-out without a diagnosis and a slide, edits or new blocks and slides after sign-out, rewriting a signed report, restricted patients without break-glass, and any access from another hospital. No coded diagnoses, synoptic protocol libraries, imaging or frozen-section integration.
+
+### Rehabilitation therapy
+
+**In short:** A doctor refers a patient for physiotherapy, occupational or speech therapy; a clinician accepts or declines, and sessions are delivered and recorded.
+
+**The detail.** A doctor refers a patient to physiotherapy, occupational therapy or speech therapy, and a clinician accepts the referral into a goal-based plan or declines it with a reason. Measurable goals are set and closed once as achieved or not achieved. Every visit is logged with attendance (attended, did not attend, cancelled) and, for attended visits, numeric outcome measures with fixed ranges: range of movement, Barthel index, pain score, grip strength, walking distance and speech intelligibility. Progress (first, latest and change per measure and site) is computed from the readings, and discharge needs a summary and every goal closed. It refuses sessions dated in the future or before the plan starts, measures at a missed visit, out-of-range or duplicate readings, edits to sessions and measures (append-only), anything on a discharged plan, and restricted patients without break-glass. Another hospital sees nothing. New permissions read access, TherapyRefer and TherapyDeliver; page /therapy.
+
+### Team meetings (tumour board)
+
+**In short:** Schedules a multidisciplinary meeting, records who attended, puts patients on the agenda with the board's question, and records the recommendation once enough people are present.
+
+**The detail.** The administrator schedules a meeting for a facility (board type, date from now to a year ahead, optional chair), invites active staff by speciality and records who is present. Doctors put a patient on an open meeting's agenda with the question for the board, and a doctor who is marked present records the recommendation once at least two attendees are present, or defers the case with a reason; follow-up actions are ordinary tasks linked to the case, and a patient's chart lists their board discussions. A meeting completes only when no case is pending, or is cancelled with a reason. It refuses: a recommendation by someone not present or without a quorum, a second outcome on a case, changes to the question, any change to a completed or cancelled meeting, and restricted patients without break-glass (the meeting view hides them). Another organisation sees nothing. No video conferencing, staging calculators or reminders. New permissions read access (doctor, nurse, administrator), write access (doctor), write access (administrator).
+
+### Adverse drug reactions
+
+**In short:** Staff report a suspected drug reaction; a pharmacist reviews it and may add the drug to the patient's allergy list. A name-free file can be exported for onward reporting.
+
+**The detail.** A doctor, nurse or pharmacist reports a suspected adverse reaction: the patient, the suspect drug with dose and route, the reaction, the onset date (never in the future), severity, outcome, the action taken, and a causality category the reporter chooses in the WHO-UMC wording; a fatal severity and a fatal outcome must go together. A pharmacist reviews each report once, confirming it or not with a comment, and may add the suspect drug to the patient's allergy list as a person's decision (never automatic, and refused if an active allergy to that drug already exists). A generic CSV for onward reporting to a national centre carries no names, identifiers or narrative, leaves out restricted patients, neutralises spreadsheet formulas and is audited. Reporters see only their own reports, reviewers see all, a restricted patient needs break-glass, and another hospital sees nothing. Reports and reviews are append-only. It sends nothing to any regulator (there is no electronic submission), scores no causality and uses no drug dictionary.
+
+### Mortuary
+
+**In short:** Chamber slots, deceased registration, tag and identity checks, belongings, and a two-person release to a named recipient, with a custody log.
+
+**The detail.** Chambers with numbered slots, deceased cases (a linked patient is optional, so an unidentified body has no name), tag and identity checks, belongings, and an append-only chain-of-custody log. A release is requested by one member of staff and approved by a different one, and goes only to a named recipient with an identity document reference. It refuses release before the body is stored and identified, release of a medico-legal hold to anyone but the police or for post-mortem, self-approval of a release, two bodies in one slot, a duplicate tag, edits to registration facts or to the log, and any change to a released case. Restricted patients are hidden (no link, no name) without break-glass, other hospitals see nothing, and the summary carries counts only. Nurses and the administrator write, doctors read, and only the administrator adds chambers.
+
+### Patient transport
+
+**In short:** A porter queue: staff request a transfer, a porter accepts, picks up and delivers, and the timeline is recorded.
+
+**The detail.** Wards and departments ask for a porter to move a bed, wheelchair, stretcher or specimen with a priority (routine, urgent, emergency). Porters work a queue with emergencies first, and the first to accept wins. Only the accepting porter records pickup and delivery. The accepting porter can release the job back to the queue. The requester, or the administrator, can cancel until pickup. Every step is written to an append-only event trail, and the administrator sees average minutes from request to accept, pickup to delivery and request to delivery. A delivered or cancelled request is final and what was asked can never change. A specimen run cannot be linked to a patient. A restricted patient needs break-glass and otherwise shows no link. Another hospital sees nothing. There is no GPS or device tracking.
+
+### Dental chart
+
+**In short:** A per-tooth chart, a multi-visit treatment plan with an estimate and consent flags, and recall dates.
+
+**The detail.** Doctors chart findings and procedures per tooth (FDI numbering, milk teeth included) and per surface. Chart entries are append-only and a wrong entry is voided once with a reason. A multi-visit treatment plan carries items by visit with a whole-paise estimate, is proposed, then consented to with two flags (estimate explained, patient consents). Consent fixes the estimate, and work is marked done only on a consented plan, which completes with its last item. Recalls carry a date and reason, and the due list shows patient ids only. Doctors write; nurses and the administrator read. A restricted patient needs break-glass, and an unknown patient or another hospital gets a "not found" answer. Radiographs, lab work orders and insurance codes are not built.
+
+### Organ and tissue donation
+
+**In short:** Internal registers for donation and transplant tracking, kept by a new transplant coordinator role. No allocation algorithm and no upload to a national registry.
+
+**The detail.** Internal registers for a transplant centre, kept by a new transplant_coordinator role, with doctors recording brain-death tests and doctors and nurses able to refer. A donor referral (trigger, donation type, organs considered, donor blood group) takes an append-only brain-death test pair, an append-only family consent history with a witness (given, declined, withdrawn), organ offers to a recipient waitlist, and append-only follow-up outcomes after a transplant. It refuses a second brain-death test by the same doctor or before the first, an offer without consent for that organ or without two confirmed tests, an offer to an ABO-incompatible recipient or to the donor, withdrawal of consent after an offer is accepted, anything on a closed referral, and any edit or delete of a record. Withdrawing consent declines open offers. A restricted patient needs break-glass, another hospital sees nothing, and the summary is counts only. Allocation algorithms and national registry upload are not built.
 
 ## Identity, language, codes and records
 
@@ -196,6 +256,30 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 
 **The detail.** The administrator sees four measures computed live from existing data (falls per 1000 bed days, medication incidents per 1000 doses given, 30-day readmission, MAR doses given late or still overdue) as numerator, denominator and rate, with drill-down to record, patient and admission ids only, and can store an append-only snapshot of the figures for an ended period. The hospital types in its own NABH, JCI, CBAHI or NSQHS clauses, links append-only evidence (document, route, record, measure), and raises mock-audit findings that close once with a resolution. It refuses everyone but the administrator (read and write access), hides a restricted patient's id without break-glass, rejects short notes, bad frameworks and periods over two years, never deletes or rewrites evidence, snapshots or what an audit found, isolates each hospital by row-level security, and states on every response that it is readiness information and not an accreditation.
 
+### Complaints and grievances
+
+**In short:** The front desk records a patient's complaint and the administrator works it from received to resolved, with escalation. Separate from star ratings and safety reports.
+
+**The detail.** Not final: the code is written but none of its checks have passed.
+
+### Clinical privileging
+
+**In short:** The credentialing committee's record of what each clinician may do: privileges, grants with validity, proctored cases and periodic reviews. A record, not enforcement.
+
+**The detail.** The credentialing committee's record, kept by the hospital administrator, of what each clinician may do. A catalogue of privileges (procedure, sedation, admitting, diagnostic, other) says how many proctored cases each needs and how often it is reviewed. A grant records the person, the committee, the decision date, the validity period (three years at most) and any conditions. A privilege that needs proctoring starts provisional and becomes active once enough satisfactory proctored cases are recorded. OPPE and FPPE reviews carry the next review date, and the grant shows when a review is overdue or the grant has expired. Suspension and revocation need a reason, and revocation is final. /privileges/check says whether a person holds a privilege right now, and the summary is counts only. It refuses to be a gate: nothing blocks anyone from working, and theatre booking does not check it. The database fixes the committee's decision, keeps proctoring cases and reviews append-only, deletes nothing, and isolates each hospital by row-level security.
+
+### Research studies
+
+**In short:** Tracks research studies, their participants and consent, for internal use only. Nothing leaves the system.
+
+**The detail.** A study registry for internal research tracking: studies with a code, phase, principal investigator and enrolment target, versioned consent texts, participants enrolled against a consent version (numbered P-001, P-002 and so on), a visit schedule and log (completed or missed, with window and overdue counts), protocol deviations (minor or major) and serious adverse events (seriousness criteria, causality, outcome). The study list gives recruitment counts and percentage of target with no names. Doctors and the hospital administrator hold the new read and write access permissions; everyone else is refused. It refuses enrolment unless the study is recruiting and under target, an unknown consent version, a patient enrolled twice, a restricted patient without break-glass, a withdrawal without a reason, a missed visit without a reason, a fatal outcome without the death criterion, and any change to a closed study. Consent versions, deviations and serious adverse events are append-only in the database, withdrawn or completed participants and logged visits are final, and row-level security isolates each hospital. No GCP compliance is claimed.
+
+### Visitors
+
+**In short:** A desk record of who is on the ward: visitor passes, sign-out, visiting hours, restrictions and a blocked list.
+
+**The detail.** The desk issues a visitor pass for a patient (name, relationship, optional phone) and signs the visitor out on leaving. Nurses and doctors place visit restrictions on a patient: no visitors refuses every pass, isolation needs each visitor briefed first, limited allows one visitor at a time; restrictions are lifted with a reason and the history is kept. A blocked-visitor list refuses a pass by name (ignoring case and spacing) or phone number. Optional versioned visiting hours need a stated reason to issue a pass outside them. At most two visitors are in for one patient at once, enforced under a per-patient lock. A restricted (confidential) patient needs break-glass and is hidden in the lists. Passes, restrictions and blocks are never deleted or edited in the database, only signed out or lifted once, and each hospital sees only its own. It does not scan IDs, print badges or alert on overstays. Permissions read access, VisitorDesk, VisitorRestrict.
+
 ## Money and statutory rules
 
 ### Controlled-drug rules
@@ -251,5 +335,11 @@ Every module here follows the same rules as the rest of ZYVORA: every action nee
 **In short:** Records an eligibility answer for a policy, holds each insurer's rules (co-pay, deductible, yearly limit, prior approval), and shows the patient's and insurer's share at order time with warnings.
 
 **The detail.** Staff record an eligibility answer for a policy, either typed in from a payer portal or phone call or produced by a simulator that works from the policy dates held here; checks are append-only. An administrator defines payer rules per payer and service category (co-pay percent and fixed amount, deductible, yearly limit, prior approval needed, valid dates); a rule's terms never change and it can only be switched off. An order-time check returns the patient and payer share in whole minor units (deductible first, then co-pay rounded up, then anything over the yearly limit falls on the patient) with warnings for a policy out of force, no or stale or inactive eligibility, no rule, prior approval missing, and an approval past its last valid day. It stores nothing and sends nothing: no 270/271, NPHIES or health-card transport, and no promise of payment. Restricted patients need break-glass and other hospitals see nothing. Billing screen "Eligibility & payer rules".
+
+### Store purchasing
+
+**In short:** Suppliers, quotations compared before an award, purchase orders approved within a department budget, and goods received matched against the supplier's invoice. No patient data.
+
+**The detail.** Buying for the general stores: suppliers, requests for quotation with quotes compared, purchase orders and goods-received notes, with a per-department yearly budget, on a new Purchasing page. An award needs three or more quotes with the lowest chosen, or a written reason, and drafts the order from the quote. The administrator approves an order, never one they drafted, and it is refused when it would take the department over its budget. Goods are received against an approved order in parts, never above what was ordered, and go into the stores ledger; the supplier's invoice total is matched with what arrived at the ordered price and a difference is recorded as a mismatch with its variance in paise. Receipts, quotes and order lines are append-only and orders are never deleted. All money is whole paise, every route is permission-checked and audited, and another hospital sees none of it. Not covered: e-tender portals, barcode scanning, accounting posting, per-user numeric approval limits.
 
 Back to the [modules overview](MODULES.md) or the [documentation index](README.md).

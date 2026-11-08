@@ -160,7 +160,7 @@ The whole list, with the reasoning: **[Intended use and limits](docs/INTENDED-US
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | The browser warning, a busy port, Windows first run, proxies |
 | [FAQ](docs/FAQ.md) | Certification, AI, where data lives, sign-in, integrations |
 | [Modules](docs/MODULES.md) | What every module does |
-| [Next release](docs/NEXT-RELEASE.md) | The 39 modules built since 0.5.2, in detail |
+| [Next release](docs/NEXT-RELEASE.md) | The 54 modules built since 0.5.2, in detail |
 | [Security overview](docs/SECURITY-OVERVIEW.md) | Controls you can point at, and what is out of scope |
 | [Intended use and limits](docs/INTENDED-USE.md) | What ZYVORA is not, yet |
 | [Releases](docs/RELEASES.md) | What is in each release, verifying downloads, upgrade, backup and restore |
