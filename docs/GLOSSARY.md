@@ -11,7 +11,7 @@
 | **ABDM** | India's national digital health mission. ZYVORA holds the local side only (a patient's address, consents and a log); it has no connection to the national gateway. |
 | **Advisory** | A hint for a person, never a decision. Early warning scores and risk bands are advisory. |
 | **Append-only** | A record that can only be added to. Corrections are new entries beside the old one; nothing is overwritten or deleted. The database enforces this, not just the application. |
-| **API** | A set of requests one computer program can make to another. ZYVORA documents 1,315 of them. |
+| **API** | A set of requests one computer program can make to another. ZYVORA documents 1,330 of them. |
 | **ASTM, HL7** | Common message formats that laboratory machines and hospital systems use to send results and admissions. |
 | **Audit trail** | A permanent log of who read or changed a record and when (never the clinical content itself). |
 | **Break-glass** | Opening a record you would not normally see, in an emergency or for a good reason. You must type the reason, it is logged, and an administrator reviews it. |
