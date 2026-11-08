@@ -2,7 +2,7 @@
 
 **Pilot-ready software, not a certified medical product. Synthetic data only.**
 
-> **In one minute.** ZYVORA's modules share one patient record, one sign-in, one audit trail and one permission model. This page lists them in two parts: first **the core** that every hospital uses daily, then **every department and specialty**, 84 documented modules in all. Modules marked *next release* are built and tested but not yet in version 0.5.2. Each table says what exists; the limits of a group are stated under it. Unfamiliar words are in the [glossary](GLOSSARY.md).
+> **In one minute.** ZYVORA's modules share one patient record, one sign-in, one audit trail and one permission model. This page lists them in two parts: first **the core** that every hospital uses daily, then **every department and specialty**, 99 documented modules in all. Modules marked *next release* are built and tested but not yet in version 0.5.2. Each table says what exists; the limits of a group are stated under it. Unfamiliar words are in the [glossary](GLOSSARY.md).
 
 **Jump to:** [The core](#the-core) · [Every department and specialty](#every-department-and-specialty) · [Coming in the next release](#coming-in-the-next-release)
 
@@ -86,7 +86,7 @@
 | Integration hub | HL7 v2 ADT and results by connector token, stored raw and de-duplicated, mapped by versioned rules, matched to patients by identifier only; uncertain matches wait for a person; replay |
 | Analysers | ASTM E1394 over HTTPS and over a TCP link, translated to the same intake; tested only with simulated instruments |
 | FHIR R4 | Read-only: Patient, Encounter, Observation, AllergyIntolerance, MedicationRequest, Appointment, `$everything` |
-| OpenAPI | One document and a typed client; 1,330 documented operations on the main branch (the latest release has fewer) |
+| OpenAPI | One document and a typed client; 1,509 documented operations on the main branch (the latest release has fewer) |
 | API keys and webhooks | Read-only role-scoped keys; signed outbound webhooks, off until an operator switches them on |
 | Edge | TLS, flood limits, a mutual-TLS listener for connecting systems, and an optional browser client-certificate gate |
 
@@ -94,7 +94,7 @@
 
 | Feature | What it does |
 |---|---|
-| Roles | 17 roles and 286 permissions on the main branch, deny by default, plus relationship and facility checks |
+| Roles | 19 roles and 323 permissions on the main branch, deny by default, plus relationship and facility checks |
 | Audit | Viewer with chain verification; every read and change of a record is recorded (metadata only) |
 | Privacy | A privacy impact assessment and an honest compliance gap list exist in the product documentation |
 
@@ -122,6 +122,10 @@ Each row is one module with its own page in the product documentation. A module 
 | **Elective waiting list** *(next release)* | Urgency categories, a clock that can pause, a forecast of who will breach their target, and a name-free report. |
 | **Capacity and safeguarding** *(next release)* | Mental-capacity assessments, legal authorisations, a restricted safeguarding log, and a restraint and seclusion register. |
 | **Infection control** *(next release)* | Hospital-acquired infection cases, isolation flags, hand-hygiene checks, colour-coded waste logs, and monthly rates. |
+| **Rehabilitation therapy** *(next release)* | A doctor refers a patient for physiotherapy, occupational or speech therapy; a clinician accepts or declines, and sessions are delivered and recorded. |
+| **Team meetings** *(next release)* | Schedules a multidisciplinary meeting, records who attended, puts patients on the agenda with the board's question, and records the recommendation once enough people are present. |
+| **Dental chart** *(next release)* | A per-tooth chart, a multi-visit treatment plan with an estimate and consent flags, and recall dates. |
+| **Organ and tissue donation** *(next release)* | Internal registers for donation and transplant tracking, kept by a new transplant coordinator role. No allocation algorithm and no upload to a national registry. |
 
 ### Diagnostics, pharmacy and supplies
 
@@ -141,6 +145,9 @@ Each row is one module with its own page in the product documentation. A module 
 | **Prescription documents** *(next release)* | A numbered prescription with the doctor's licence and a validity window, which a pharmacist verifies and dispenses once. |
 | **Medical terminology** *(next release)* | Concept lists the hospital is licensed to use, search, and links from lab tests and medicines to the standard codes. |
 | **Implants and device recalls** *(next release)* | A register of implanted devices by unique ID, matching safety notices to patients, and a report draft that is never sent. |
+| **Pathology** *(next release)* | Follows tissue and cell specimens from receipt through cutting and slides to a doctor's signed report, with later additions kept as addenda. |
+| **Store purchasing** *(next release)* | Suppliers, quotations compared before an award, purchase orders approved within a department budget, and goods received matched against the supplier's invoice. No patient data. |
+| **Adverse drug reactions** *(next release)* | Staff report a suspected drug reaction; a pharmacist reviews it and may add the drug to the patient's allergy list. A name-free file can be exported for onward reporting. |
 
 ### Records, identity and privacy
 
@@ -196,6 +203,13 @@ Each row is one module with its own page in the product documentation. A module 
 | **Bed and staffing forecast** | Predicts occupied beds and emergency arrivals, shows how wrong past forecasts were, and flags days the rota falls short. |
 | **Bedside device readings** | Bedside monitors send readings that attach to the right patient, with alerts for critical values. |
 | **Device alerts and trends** | Per-patient and children's alert limits, alerts when a device goes silent, trends, and infusion pumps and ventilators. |
+| **Complaints and grievances** *(next release)* | The front desk records a patient's complaint and the administrator works it from received to resolved, with escalation. Separate from star ratings and safety reports. |
+| **Clinical privileging** *(next release)* | The credentialing committee's record of what each clinician may do: privileges, grants with validity, proctored cases and periodic reviews. A record, not enforcement. |
+| **Mortuary** *(next release)* | Chamber slots, deceased registration, tag and identity checks, belongings, and a two-person release to a named recipient, with a custody log. |
+| **Mass-casualty mode** *(next release)* | Activates a disaster plan, names incident command, keeps call-out lists and drill logs, and registers casualties under temporary IDs with triage colours. It records; it sends nothing. |
+| **Occupational health** *(next release)* | Staff fitness checks, vaccinations and sharps or splash exposures with follow-up, kept apart from HR and visible only to the staff member and occupational health. |
+| **Patient transport** *(next release)* | A porter queue: staff request a transfer, a porter accepts, picks up and delivers, and the timeline is recorded. |
+| **Visitors** *(next release)* | A desk record of who is on the ward: visitor passes, sign-out, visiting hours, restrictions and a blocked list. |
 
 ### Insight and public health
 
@@ -212,6 +226,7 @@ Each row is one module with its own page in the product documentation. A module 
 | **Immunisation schedules** *(next release)* | The hospital's own schedule, who is due or overdue, doses given and wasted, and a printable child health card. |
 | **Telemedicine rules** *(next release)* | Consent and visit type recorded for each tele-visit, the doctor's registration shown, and prescribing limited to an approved list. |
 | **National exchange messages** *(next release)* | Builds the message a national health exchange would expect (Malaffi, NABIDH, SATUSEHAT, ABDM, NEHR), scores how complete it is, and tries it on a local simulator. Nothing is sent anywhere. |
+| **Research studies** *(next release)* | Tracks research studies, their participants and consent, for internal use only. Nothing leaves the system. |
 
 ### Everyday and branding
 
@@ -225,6 +240,6 @@ Each row is one module with its own page in the product documentation. A module 
 
 ## Coming in the next release
 
-39 of the modules above are built and tested on the main branch and are **not in the latest release (0.5.2)**. They are described one by one, with what each refuses and where its limits are, in the **[next-release guide](NEXT-RELEASE.md)**. Same limits apply: pilot-ready, synthetic data only, not certified, and nothing here sends data to any outside system.
+54 of the modules above are built and tested on the main branch and are **not in the latest release (0.5.2)**. They are described one by one, with what each refuses and where its limits are, in the **[next-release guide](NEXT-RELEASE.md)**. Same limits apply: pilot-ready, synthetic data only, not certified, and nothing here sends data to any outside system.
 
 Back to the [documentation index](README.md).

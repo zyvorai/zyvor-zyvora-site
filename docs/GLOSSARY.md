@@ -11,7 +11,7 @@
 | **ABDM** | India's national digital health mission. ZYVORA holds the local side only (a patient's address, consents and a log); it has no connection to the national gateway. |
 | **Advisory** | A hint for a person, never a decision. Early warning scores and risk bands are advisory. |
 | **Append-only** | A record that can only be added to. Corrections are new entries beside the old one; nothing is overwritten or deleted. The database enforces this, not just the application. |
-| **API** | A set of requests one computer program can make to another. ZYVORA documents 1,330 of them. |
+| **API** | A set of requests one computer program can make to another. ZYVORA documents 1,509 of them. |
 | **ASTM, HL7** | Common message formats that laboratory machines and hospital systems use to send results and admissions. |
 | **Audit trail** | A permanent log of who read or changed a record and when (never the clinical content itself). |
 | **Break-glass** | Opening a record you would not normally see, in an emergency or for a good reason. You must type the reason, it is logged, and an administrator reviews it. |
@@ -44,7 +44,7 @@
 | **PKCE, OpenID Connect** | The modern, safe way to sign in through an identity provider without sharing a password with the application. |
 | **Propose-only** | An assistant that can only leave a suggestion; a person accepts or dismisses it. |
 | **Restricted record** | A record marked so that only people with a reason can open it (through break-glass). |
-| **Role** | A job, such as doctor or pharmacist, with a fixed list of what it may do. ZYVORA has 17. |
+| **Role** | A job, such as doctor or pharmacist, with a fixed list of what it may do. ZYVORA has 19. |
 | **Row-level security** | The database itself hides rows that belong to another hospital, even if the application had a bug. |
 | **Simulator** | A pretend version of an outside system, used so the feature can be tried without sending anything anywhere. |
 | **SHA-256** | A fingerprint of a file. If one letter of the file changes, the fingerprint changes. |
