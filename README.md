@@ -190,6 +190,3 @@ The whole list, with the reasoning: **[Intended use and limits](docs/INTENDED-US
 
 </div>
 
-## Our strategic partner
-
-**[Medlius Pharma](https://medliuspharma.com/contact)** is a strategic partner of Zyvor AI Labs. Get in touch with them through [their website](https://medliuspharma.com/contact).
