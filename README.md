@@ -26,6 +26,8 @@
 
 ### Intelligence for a Healthier World.
 
+[Client overview (PDF)](docs/ZYVORA-Client-Overview.pdf)
+
 **Patients, wards, lab, pharmacy and billing in one secure place, with assistance that drafts and people who decide.**
 
 <sub>Registry · Scheduling · Notes and charts · Prescribing · Emergency · Wards and theatre · Discharge · Lab and analysers · Imaging · Pharmacy · Billing and collections · Claims · Follow-up and care programmes · Patient portal · Audit · FHIR · Integration hub · Propose-only assistants</sub>
