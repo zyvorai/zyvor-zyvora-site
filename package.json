@@ -1,0 +1,8 @@
+{
+  "name": "zyvor-zyvora-site",
+  "private": true,
+  "type": "module",
+  "description": "Checks for the ZYVORA product site (the site itself is plain static files at the repository root).",
+  "scripts": { "check": "node scripts/site-check.mjs ." },
+  "devDependencies": { "@axe-core/playwright": "4.14.0", "@playwright/test": "1.64.1" }
+}

@@ -1,0 +1,34 @@
+name: Demo feedback
+description: Tell us what worked, what confused you, or what you wanted to see.
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ZYVORA is built and tested with **synthetic data only**. **Never include patient data or credentials** in this form.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Your role
+      options: [Doctor or nurse, Hospital administrator, IT, Security reviewer, Other]
+    validations: { required: true }
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked?
+  - type: textarea
+    id: confused
+    attributes:
+      label: What confused you, or was slow?
+    validations: { required: true }
+  - type: textarea
+    id: wanted
+    attributes:
+      label: What did you want to see and not find?
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Safe to share
+      options:
+        - label: I have not included patient data or credentials.
+          required: true
