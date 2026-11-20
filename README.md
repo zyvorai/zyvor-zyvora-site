@@ -150,7 +150,7 @@ The same two container images run on **Docker Compose**, on **Kubernetes** with 
 - **Integrations.** FHIR R4 is read-only. Only FluxVM has been verified live; Netra and Nuvora are tested against stand-ins.
 - **Not built yet:** automated backups, critical-result paging, transmission of prescriptions, a payment gateway, patient self-booking, full translation of the interface (a first draft of Arabic and Hindi is in the next release), a released native mobile app.
 
-The whole list, with the reasoning: **[Intended use and limits](docs/INTENDED-USE.md)**. Pricing has not been decided and there are no customer stories yet; the website says so.
+The whole list, with the reasoning: **[Intended use and limits](docs/INTENDED-USE.md)**. List price: INR 350 per bed per month incl. 18% GST in India, about US$4 excl. tax elsewhere (VAT, GST or sales tax added where applicable); custom pricing: sales@zyvor.dev. There are no customer stories yet; the website says so.
 
 ---
 

@@ -39,6 +39,6 @@
 
 ## Placeholders you will see on the website
 
-Pricing tiers and customer stories are **deliberately unfinished**. Pricing has not been decided and no figure is an offer; ZYVORA has not been deployed with a customer.
+Customer stories are **deliberately unfinished**. The list price is INR 350 per bed per month incl. 18% GST in India, about US$4 per bed per month excl. tax elsewhere; ZYVORA has not been deployed with a customer.
 
 Questions: [sales@zyvor.dev](mailto:sales@zyvor.dev) · [security@zyvor.dev](mailto:security@zyvor.dev) · Unfamiliar word: [glossary](GLOSSARY.md)

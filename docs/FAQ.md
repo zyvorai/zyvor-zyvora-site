@@ -92,7 +92,7 @@ The installer checks a SHA-256 fingerprint against the release's `SHA256SUMS` an
 ## Cost and customers
 
 ### What does it cost?
-Pricing has not been decided. The website shows a layout only and no figure is an offer. To discuss a pilot: [sales@zyvor.dev](mailto:sales@zyvor.dev).
+List price: INR 350 per bed per month incl. 18% GST in India; about US$4 per bed per month excl. tax elsewhere (VAT, GST or sales tax added where applicable). Pay online by UPI, card or netbanking (international cards work, charged in rupees), or request a US-dollar invoice by bank transfer. Monthly plans are invoiced until Razorpay Subscriptions open. [Buy](https://zyvor.dev/buy). To discuss a pilot or custom pricing: [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
 ### Has a customer used it?
 Not yet. There are no customer stories, and the website says so.
